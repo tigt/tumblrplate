@@ -15,7 +15,7 @@ Tumblr automatically slaps `<!DOCTYPE html>` at the start of every page served, 
 
 As such, specifying a doctype in your Tumblr theme is a waste of bytes. Notably, the [official Optica theme](https://www.tumblr.com/theme/37310) is guilty of this, so it's possible I'm missing something.
 
-##C#harset encoding
+###Charset encoding
 
 Tumblr already specifies UTF-8 in its server headers, which always trump a meta specification. This tumblr-wide standard is presumably for XSS prevention and to protect against any malformed charsets.
 
