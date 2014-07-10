@@ -5,7 +5,9 @@
    | | |.|_| |.|\/|.| . \.|__|   /  _/.|__ / _ \| | | _| 
    |_|  \___/|_|  |_|___/____|_|_\_| |____/_/ \_\_| |___\
 
-Tumblrplate is a starting template for creating powerful, fast Tumblr themes. Feel free to replace this readme and ASCII logo with your own, but I sure wouldn't mind some credit. For more information, updates, and plugins/extensions, visit 
+Tumblrplate is a starting template for creating powerful, fast Tumblr themes.
+Feel free to replace this readme and ASCII logo with your own, but I sure wouldn't mind some credit.
+For more information, updates, and plugins/extensions, visit 
 
 <meta name="text:ISO Language Code" content="">
 <meta name="text:Disqus shortname" content="">
@@ -91,22 +93,25 @@ code, kbd, pre, samp {
 }
 
     xKit-replies styling for best results
+    
     {CustomCSS}
 </style>
-    <IE conditional HTML5 shiv>
+<!--[if lt IE 9]><script src="http://static.tumblr.com/hriofhd/Qj0m8pn7q/html5shiv.js"></script><![endif]-->
   <meta og, twitter cards, more?>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="shortcut icon" href="{PortraitURL-64}" />
 <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
 <link rel="alternate" type="application/rss+xml" href="{RSS}" />
 
-<title>{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{block:TagPage}#{Tag} on {/block:TagPage}{block:PermalinkPage}{block:PostTitle}{PostTitle} - {/block:PostTitle}{block:PermalinkPage}{block:DayPage}{lang:Posted on Month DayOfMonth Year} - {/block:DayPage}{Title}</title>
+<title>{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{block:TagPage}#{Tag} - {/block:TagPage}{block:PermalinkPage}{block:PostTitle}{PostTitle} - {/block:PostTitle}{block:PermalinkPage}{block:DayPage}{lang:Posted on Month DayOfMonth Year} - {/block:DayPage}{Title}</title>
 {block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
 
 Subsetted icon font?
 
   <seo link rels>
 <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
+OpenSearch xml file on google code or somewhere--just to add tab complete to tumblr's tag search
 </head>
 <body>
 <header>
@@ -114,6 +119,8 @@ Subsetted icon font?
   <h2>{Description}</h2>
 </header>
 <main>
+
+Enable custom 404 code for when search doesn't find anything
 Open posts: tags as classes, other identifiers
 <article>
 
