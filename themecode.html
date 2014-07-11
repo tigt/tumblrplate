@@ -1,9 +1,9 @@
-<html {block:IfRightToLeftLanguage}dir="rtl" {/block:IfRightToLeftLanguage}lang="{block:IfISOLanguageCode}{text:ISO Language Code}{/block:IfISOLanguageCode}{block:IfNotISOLanguageCode}{block:English}en{/block:English}{block:German}de{/block:German}{block:French}fr{/block:French}{block:Italian}it{/block:Italian}{block:Japanese}ja{/block:Japanese}{block:Turkish}tr{/block:Turkish}{block:Spanish}es{/block:Spanish}{block:Russian}ru{/block:Russian}{block:Polish}pl{/block:Polish}{block:PortuguesePT}pt-pt{/block:PortuguesePT}{block:PortugueseBR}pt-br{/block:PortugueseBR}{block:Dutch}nl{/block:Dutch}{block:Korean}ko{/block:Korean}{/block:IfNotISOLanguageCode}" >
+<html {block:IfRightToLeftLanguage}dir="rtl" {/block:IfRightToLeftLanguage}lang="{block:IfISOLanguageCode}{text:ISO Language Code}{/block:IfISOLanguageCode}{block:IfNotISOLanguageCode}{block:English}en{/block:English}{block:German}de{/block:German}{block:French}fr{/block:French}{block:Italian}it{/block:Italian}{block:Japanese}ja{/block:Japanese}{block:Turkish}tr{/block:Turkish}{block:Spanish}es{/block:Spanish}{block:Russian}ru{/block:Russian}{block:Polish}pl{/block:Polish}{block:PortuguesePT}pt-pt{/block:PortuguesePT}{block:PortugueseBR}pt-br{/block:PortugueseBR}{block:Dutch}nl{/block:Dutch}{block:Korean}ko{/block:Korean}{/block:IfNotISOLanguageCode}">
 <head>{block:Hidden}
   ________                   _  __              
  /_  __/ /  ___ __ _  ___   / |/ /__ ___ _  ___ 
   / / / _ \/ -_)  ' \/ -_) /    / _ `/  ' \/ -_)
- /_/ /_//_/\__/_/_/_/\__/ /_/|_/\_,_/_/_/_/\__/    		(make your own at patorjk.com/software/taag)
+ /_/ /_//_/\__/_/_/_/\__/ /_/|_/\_,_/_/_/_/\__/        (make your own ASCII logo at patorjk.com/software/taag)
 
 │By: Author Name | Demo: themeblog.tumblr.com | Support email: author@mail.com	(These are required by Tumblr)
 ╘╤════════════════════════════════════════════════════════════════════════════
@@ -22,13 +22,16 @@
 
 <meta name="text:ISO Language Code" content="">
 <meta name="if:Right to left language" content="0">
+
 <meta name="text:Disqus shortname" content="">
 <meta name="text:Google Analytics ID" content="">
+
+
 {/block:Hidden}
 <link rel="dns-prefetch" href="//assets.tumblr.com/">
 <link rel="dns-prefetch" href="//secure.assets.tumblr.com/">
 <link rel="dns-prefetch" href="//static.tumblr.com/">
-<normalize.css>
+<!--[if IE 6]><![endif]--><!--This fixes some loading issues with IE8+-->
 <style>
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
@@ -134,6 +137,7 @@ audio, canvas, img, svg, video {
 .clearfix:after {
     clear: both;
 }
+
 @media print {
     * {
         background: transparent !important;
@@ -184,15 +188,12 @@ audio, canvas, img, svg, video {
         max-width: 100% !important;
     }
 
-    p,
-    h2,
-    h3 {
+    p, h2, h3 {
         orphans: 3;
         widows: 3;
     }
 
-    h2,
-    h3 {
+    h2, h3 {
         page-break-after: avoid;
     }
 }
@@ -211,26 +212,27 @@ audio, canvas, img, svg, video {
 <title>{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{block:TagPage}#{Tag} - {/block:TagPage}{block:PermalinkPage}{block:PostTitle}{PostTitle} - {/block:PostTitle}{block:PermalinkPage}{block:DayPage}{lang:Posted on Month DayOfMonth Year} - {/block:DayPage}{Title}</title>
 {block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
 
-Subsetted icon font?
+Subsetted icon font? --put in extensions
 
-  <seo link rels>
+<seo link rels>
 <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 
-OpenSearch xml file on google code or somewhere--just to add tab complete to tumblr's tag search
+<!-- Tumblr's default OG tags --><meta property="fb:app_id" content="48119224995" /><meta property="og:title" content="Fake it &#039;til you make it" /><meta property="og:url" content="http://ti.gt/?og=1" /><meta property="og:description" content="Art and other productivity by Taylor (Tigt) Hunt. I take requests." /><meta property="og:type" content="tumblr-feed:tumblelog" /><meta property="og:image" content="http://37.media.tumblr.com/avatar_27bf8514a5af_128.png" /><meta property="al:ios:url" content="tumblr://x-callback-url/blog?blogName=tigts" /><meta property="al:ios:app_name" content="Tumblr" /><meta property="al:ios:app_store_id" content="305343404" /><meta property="al:android:url" content="tumblr://x-callback-url/blog?blogName=tigts" /><meta property="al:android:app_name" content="Tumblr" /><meta property="al:android:package" content="com.tumblr" />
+
+<!-- Tumblr's default Twitter Card tags --><meta charset="utf-8"><meta name="twitter:site" content="tumblr" /><meta name="twitter:card" content="summary" /><meta name="twitter:title" content="tigts" /><meta name="twitter:description" content="Art and other productivity by Taylor (Tigt) Hunt. I take requests." /><meta name="twitter:app:name:iphone" content="Tumblr" /><meta name="twitter:app:name:ipad" content="Tumblr" /><meta name="twitter:app:name:googleplay" content="Tumblr" /><meta name="twitter:app:id:iphone" content="305343404" /><meta name="twitter:app:id:ipad" content="305343404" /><meta name="twitter:app:id:googleplay" content="com.tumblr" /><meta name="twitter:app:url:iphone" content="tumblr://x-callback-url/blog?blogName=tigts&amp;referrer=twitter-cards" /><meta name="twitter:app:url:ipad" content="tumblr://x-callback-url/blog?blogName=tigts&amp;referrer=twitter-cards" /><meta name="twitter:app:url:googleplay" content="tumblr://x-callback-url/blog?blogName=tigts&amp;referrer=twitter-cards" />
 </head>
-<body>
+
+<!--[if lt IE 7]><body class="lt-ie10 lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><body class="lt-ie10 lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><body class="lt-ie10 lt-ie9"><![endif]-->
+<!--[if IE 9]><body class="lt-ie10"><![endif]-->
+<!--[if gt IE 9]><!--> <body> <!--<![endif]-->
+
 <header>
   <h1>{Title}</h1>
   <h2>{Description}</h2>
-  
-  
-  <form action="/search" method="get">
-                <input type="search" name="q" placeholder="Search for a tag" value="{SearchQuery}" required />
-                <input type="hidden" value="{BlogURL}" />
-                <input type="submit" value="Search" />
-
-            </form>
-<button></button>
+    <nav>
+    </nav>
 </header>
 <main>
 
