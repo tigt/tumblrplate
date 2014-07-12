@@ -31,7 +31,8 @@
 <link rel="dns-prefetch" href="//assets.tumblr.com/">
 <link rel="dns-prefetch" href="//secure.assets.tumblr.com/">
 <link rel="dns-prefetch" href="//static.tumblr.com/">
-<!--[if IE 6]><![endif]--><!--This fixes some loading issues with IE8+-->
+
+<!--[if IE 6]><![endif]--><!--This fixes some loading issues with IE-->
 <style>
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
@@ -203,25 +204,44 @@ audio, canvas, img, svg, video {
     {CustomCSS}
 </style>
 <!--[if lt IE 9]><script src="http://static.tumblr.com/hriofhd/Qj0m8pn7q/html5shiv.js"></script><![endif]-->
-  <meta og, twitter cards, more?>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="shortcut icon" href="{PortraitURL-64}" />
-<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
-<link rel="alternate" type="application/rss+xml" href="{RSS}" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
 <title>{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{block:TagPage}#{Tag} - {/block:TagPage}{block:PermalinkPage}{block:PostTitle}{PostTitle} - {/block:PostTitle}{block:PermalinkPage}{block:DayPage}{lang:Posted on Month DayOfMonth Year} - {/block:DayPage}{Title}</title>
+
 {block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
 
-Subsetted icon font? --put in extensions
+<link rel="alternate" type="application/rss+xml" title="{lang:RSS feed}" href="{RSS}" />
 
-<seo link rels>
 <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+<link rel="canonical" href="{Permalink}"><!--Test on non-post pages-->
+<link rel="shortlink" href="{ShortURL}"><!--Test on non-post pages-->
 
-<!-- Tumblr's default OG tags --><meta property="fb:app_id" content="48119224995" /><meta property="og:title" content="Fake it &#039;til you make it" /><meta property="og:url" content="http://ti.gt/?og=1" /><meta property="og:description" content="Art and other productivity by Taylor (Tigt) Hunt. I take requests." /><meta property="og:type" content="tumblr-feed:tumblelog" /><meta property="og:image" content="http://37.media.tumblr.com/avatar_27bf8514a5af_128.png" /><meta property="al:ios:url" content="tumblr://x-callback-url/blog?blogName=tigts" /><meta property="al:ios:app_name" content="Tumblr" /><meta property="al:ios:app_store_id" content="305343404" /><meta property="al:android:url" content="tumblr://x-callback-url/blog?blogName=tigts" /><meta property="al:android:app_name" content="Tumblr" /><meta property="al:android:package" content="com.tumblr" />
+<!-- Begin the onslaught of various system icons & integrations-->
+<link rel="shortcut icon" href="{Favicon}" />
 
-<!-- Tumblr's default Twitter Card tags --><meta charset="utf-8"><meta name="twitter:site" content="tumblr" /><meta name="twitter:card" content="summary" /><meta name="twitter:title" content="tigts" /><meta name="twitter:description" content="Art and other productivity by Taylor (Tigt) Hunt. I take requests." /><meta name="twitter:app:name:iphone" content="Tumblr" /><meta name="twitter:app:name:ipad" content="Tumblr" /><meta name="twitter:app:name:googleplay" content="Tumblr" /><meta name="twitter:app:id:iphone" content="305343404" /><meta name="twitter:app:id:ipad" content="305343404" /><meta name="twitter:app:id:googleplay" content="com.tumblr" /><meta name="twitter:app:url:iphone" content="tumblr://x-callback-url/blog?blogName=tigts&amp;referrer=twitter-cards" /><meta name="twitter:app:url:ipad" content="tumblr://x-callback-url/blog?blogName=tigts&amp;referrer=twitter-cards" /><meta name="twitter:app:url:googleplay" content="tumblr://x-callback-url/blog?blogName=tigts&amp;referrer=twitter-cards" />
+<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+
+<meta name="application-name" content="{Title}">
+<meta name="msapplication-tooltip" content="{MetaDescription">
+<meta name="msapplication-starturl" content="{BlogURL}">
+<meta name="msapplication-TileImage" content="{PortraitURL-128}">
+<meta name="msapplication-square70x70logo" content="{PortraitURL-96}">
+<meta name="msapplication-square150x150logo" content="{PortraitURL-128}">
+<meta name="msapplication-navbutton-color" content="{AccentColor}">
+<meta name="msapplication-TileColor" content="{AccentColor}">
+{block:AskEnabled}
+<meta name="msapplication-task" content="name={AskLabel};action-uri={BlogURL}/ask">
+{/block:AskEnabled}
+{block:SubmissionsEnabled}
+<meta name="msapplication-task" content="name={SubmitLabel};action-uri={BlogURL}/submit">
+{/block:SubmissionsEnabled}
+
+<!-- Modified Tumblr's default OG tags --><meta property="fb:app_id" content="48119224995" /><meta property="og:title" content="{Title}" /><meta property="og:url" content="{BlogURL}?og=1" /><meta property="og:description" content="{MetaDescription}" /><meta property="og:type" content="tumblr-feed:tumblelog" /><meta property="og:image" content="{PortraitURL-128}" /><meta property="al:ios:url" content="tumblr://x-callback-url/blog?blogName={Name}" /><meta property="al:ios:app_name" content="Tumblr" /><meta property="al:ios:app_store_id" content="305343404" /><meta property="al:android:url" content="tumblr://x-callback-url/blog?blogName={Name}" /><meta property="al:android:app_name" content="Tumblr" /><meta property="al:android:package" content="com.tumblr" />
+
+<!-- Modified Tumblr's default Twitter Card tags --><!--<meta charset="utf-8"> Remove?--><meta name="twitter:site" content="tumblr" /><meta name="twitter:card" content="summary" /><meta name="twitter:title" content="tigts" /><meta name="twitter:description" content="{MetaDescription}" /><meta name="twitter:app:name:iphone" content="Tumblr" /><meta name="twitter:app:name:ipad" content="Tumblr" /><meta name="twitter:app:name:googleplay" content="Tumblr" /><meta name="twitter:app:id:iphone" content="305343404" /><meta name="twitter:app:id:ipad" content="305343404" /><meta name="twitter:app:id:googleplay" content="com.tumblr" /><meta name="twitter:app:url:iphone" content="tumblr://x-callback-url/blog?blogName={Name}&amp;referrer=twitter-cards" /><meta name="twitter:app:url:ipad" content="tumblr://x-callback-url/blog?blogName={Name}&amp;referrer=twitter-cards" /><meta name="twitter:app:url:googleplay" content="tumblr://x-callback-url/blog?blogName={Name}&amp;referrer=twitter-cards" />
+
 </head>
-
 <!--[if lt IE 7]><body class="lt-ie10 lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if IE 7]><body class="lt-ie10 lt-ie9 lt-ie8"><![endif]-->
 <!--[if IE 8]><body class="lt-ie10 lt-ie9"><![endif]-->
@@ -231,21 +251,36 @@ Subsetted icon font? --put in extensions
 <header>
   <h1>{Title}</h1>
   <h2>{Description}</h2>
-    <nav>
-    </nav>
+	<nav>
+	</nav>
 </header>
+
 <main>
 
 Enable custom 404 code for when search doesn't find anything
-Open posts: tags as classes, other identifiers
+Open posts: tags as classes?, other identifiers
 <article>
 
 
 Close post types
 Post-info: Permalink, timestamp, source, reblogged from, tags
+
+{block:IfDisqusShortname}
+{block:PermalinkPage}
+<section class="comments">
+<div id="disqus_thread"></div>
+<script>(function(){var dsq=document.createElement('script');dsq.type='text/javascript';dsq.async=true;dsq.src='http://{text:Disqus Shortname}.disqus.com/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+<noscript>{lang:Blog comments powered by Disqus 2}</a></noscript>
+</section>
+{/block:PermalinkPage}
+{/block:IfDisqusShortname}
+
 </article>
 Close posts
 </main>
 <footer></footer>
-Optimized ga.js snippet
+
+{block:IfGoogleAnalyticsID}<!-- credit to HTML5Boilerplateteam-->
+<script>(function(t,b,r,p,l,t){t.GoogleAnalyticsObject=p;t[p]||(t[p]=function(){(t[p].q=t[p].q||[]).push(arguments)});t[p].p=+new Date;l=b.createElement(r);t=b.getElementsByTagName(r)[0];l.src='//www.google-analytics.com/analytics.js';t.parentNode.insertBefore(l,t)}(window,document,'script','ga'));ga('create','{text:GoogleAnalyticsID}');ga('send','pageview');</script>
+{/block:IfGoogleAnalyticsID}
 </body></html>
