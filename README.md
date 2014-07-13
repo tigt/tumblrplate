@@ -51,7 +51,7 @@ Using Tumblr's language selection blocks, tumblrplate will automatically insert 
 
 By default, Tumblr inserts a DNS prefetch meta tag explicitly disallowing it. My guess is that this prevents browsers from prefetching what they assume are different subdomains, but in actuality are just long reblog chains of conversations between tumblr users with the same IP.
 
-However, the disallow tag only turns off the default behavior of prefetching arbitrary links on the page, so if we want to specifically target some URLs, we can. I've added `assets.tumblr.com`, `secure.asssets.tumblr.com`, and `static.tumblr.com`; all near-universal subdomains for Tumblr blogs, as they host the images, fonts, scripts, and other files that make up Tumblr themes and infrastructure.
+However, the disallow tag only turns off the default behavior of prefetching arbitrary links on the page, so if we want to specifically target some URLs, we can. I've added `secure.asssets.tumblr.com` and `static.tumblr.com`; both near-universal subdomains for Tumblr blogs, as they host the images, fonts, scripts, and other files that make up Tumblr themes and infrastructure. `assets.tumblr.com` is not included, as tumblr automatically serves a script hosted there as the first thing on any blog page.
 
 ==========
 
