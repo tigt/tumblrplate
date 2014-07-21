@@ -219,18 +219,18 @@ audio, canvas, img, svg, video {
 {/block:IndexPage}
 {block:PermalinkPage}<meta name="description" content="{PostSummary}">{/block:PermalinkPage}
 
-<meta name="author" content="{Name}"> <!--Maybe have this as a text: block-->
+<meta name="author" content="{Name}"> <!--Maybe have this as a text: variable-->
 <meta name="designer" content="Tigt"> <!-- (!) Put your name/brand here! Doesn't appear to accept URLS. Nothing really supports it yet, but it's a nice little credit to have. -->
+<meta name="generator" content="Tumblr">
 
 <link rel="alternate" type="application/rss+xml" title="{lang:RSS feed}" href="{RSS}" />
 
-<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <link rel="canonical" href="{Permalink}"><!--Test on non-post pages-->
 <link rel="shortlink" href="{ShortURL}"><!--Test on non-post pages-->
 
 <link rel="shortcut icon" href="{Favicon}" />
 <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
-<meta name="application-name" content="{Title}">
 <meta name="theme-color" content="{AccentColor}">
 
 <!-- Modified Tumblr's default OG tags --><meta property="fb:app_id" content="48119224995" /><meta property="og:title" content="{Title}" /><meta property="og:url" content="{BlogURL}?og=1" /><meta property="og:description" content="{MetaDescription}" /><meta property="og:type" content="tumblr-feed:tumblelog" /><meta property="og:image" content="{PortraitURL-128}" /><meta property="al:ios:url" content="tumblr://x-callback-url/blog?blogName={Name}" /><meta property="al:ios:app_name" content="Tumblr" /><meta property="al:ios:app_store_id" content="305343404" /><meta property="al:android:url" content="tumblr://x-callback-url/blog?blogName={Name}" /><meta property="al:android:app_name" content="Tumblr" /><meta property="al:android:package" content="com.tumblr" />
