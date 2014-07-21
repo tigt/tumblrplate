@@ -1,14 +1,14 @@
 <html {block:IfRightToLeftLanguage}dir="rtl" {/block:IfRightToLeftLanguage}lang="{block:IfISOLanguageCode}{text:ISO Language Code}{/block:IfISOLanguageCode}{block:IfNotISOLanguageCode}{block:English}en{/block:English}{block:German}de{/block:German}{block:French}fr{/block:French}{block:Italian}it{/block:Italian}{block:Japanese}ja{/block:Japanese}{block:Turkish}tr{/block:Turkish}{block:Spanish}es{/block:Spanish}{block:Russian}ru{/block:Russian}{block:Polish}pl{/block:Polish}{block:PortuguesePT}pt-pt{/block:PortuguesePT}{block:PortugueseBR}pt-br{/block:PortugueseBR}{block:Dutch}nl{/block:Dutch}{block:Korean}ko{/block:Korean}{/block:IfNotISOLanguageCode}">
 <head>{block:Hidden}
-  ________                   _  __              
- /_  __/ /  ___ __ _  ___   / |/ /__ ___ _  ___ 
+  ________                   _  __
+ /_  __/ /  ___ __ _  ___   / |/ /__ ___ _  ___
   / / / _ \/ -_)  ' \/ -_) /    / _ `/  ' \/ -_)
  /_/ /_//_/\__/_/_/_/\__/ /_/|_/\_,_/_/_/_/\__/        (make your own ASCII logo at patorjk.com/software/taag)
 
 │By: Author Name | Demo: themeblog.tumblr.com | Support email: author@mail.com	(These are required by Tumblr)
 ╘╤════════════════════════════════════════════════════════════════════════════
  ├─ themeauthor.tumblr.com
- ├─ @twitter 
+ ├─ @twitter
  ├─ +yougettheidea
 ╒╧═══════════════════════════════╕ 
 │'     ᴘʀᴏᴜᴅʟʏ ʙᴜɪʟᴛ ᴡɪᴛʜ       '│
@@ -16,13 +16,16 @@
 │.     [ti.gt/tumblrplate]      .│
 ╘════════════════════════════════╛
 
-...Tumblrplate is a framework for creating powerful, fast Tumblr themes. For instructions, explanations, updates, credits, and plugins/extensions, visit http://ti.gt/tumblrplate/. Feel free to replace this information, but if you want to support this project, including the the above placard would be nice. (One might even call it... a boilerplate.)
+...Tumblrplate is a framework for creating powerful, fast Tumblr themes.
+For instructions, explanations, updates, credits, and plugins/extensions, visit http://ti.gt/tumblrplate/.
+Feel free to replace this information, but if you want to support this project,
+including the the above placard would be nice. (One might even call it... a boilerplate.)
 
 
 
 <meta name="text:ISO Language Code" content="">
 <meta name="if:Right to left language" content="0">
-<meta name="if:Public group blog authors" content="0">--> link rel=author for each contributor
+<meta name="if:Public group blog authors" content="0"> --> link rel=author for each contributor
 <meta name="if:Turn on copyright" content="0"> --><link rel="copyright" href="#copyright">
 
 <meta name="text:Disqus shortname" content="">
@@ -30,13 +33,10 @@
 
 
 {/block:Hidden}
-<!-- Tumblr also loads b.scorecardresearch.com, edge.quantserve.com, l.yimg.com,
-and www.google-analytics.com at the end of the page. I'm of the option to just skip those, as they're just
-Tumblr's built-in trackers and have squat to do with what visitors want. -->
-<link rel="dns-prefetch" href="https://secure.assets.tumblr.com/">
-<link rel="dns-prefetch" href="http://static.tumblr.com/">
+<!-- Test if these prefetches actually make anything faster -->
+<link rel="dns-prefetch" href="https://secure.assets.tumblr.com/"><link rel="dns-prefetch" href="http://static.tumblr.com/">
 
-<!--[if IE 6]><![endif]--><!--This fixes some loading issues with IE-->
+<!--[if IE 6]><![endif]--><!--This conditional comment fixes some loading issues with IE8-->
 <style>
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
@@ -198,26 +198,26 @@ audio, canvas, img, svg, video {
     xKit-replies styling for best results
     
     {CustomCSS}
-    
-*, *:before, *:after { 
-    /*This fixes some ugly corners and enables (semi)transparent borders, has to be set last or loses effect*/
-    background-clip: padding-box;
-}
-
 </style>
+
+<!-- This fixes some ugly corners and enables (semi)transparent borders, has to be set last or loses effect -->
+<style>*,*:before,*:after{background-clip: padding-box;}</style>
+    
+<!-- create more efficient HTML5shiv functionality?-->
 <!--[if lt IE 9]><script src="http://static.tumblr.com/hriofhd/Qj0m8pn7q/html5shiv.js"></script><![endif]-->
 
 <!-- These meta tags are for smartphones. If your theme is unsuitable for mobile, you can delete them-->
 <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui" />
-<meta name="format-detection" content="telephone=no" />
-<meta name="format-detection" content="address=no" /> 
+<meta name="format-detection" content="telephone=no, address=no" />
 
 <title>{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{block:TagPage}#{Tag} - {/block:TagPage}{block:PermalinkPage}{block:PostTitle}{PostTitle} - {/block:PostTitle}{block:PermalinkPage}{block:DayPage}{lang:Posted on Month DayOfMonth Year} - {/block:DayPage}{Title}</title>
+{block:IndexPage}{block:Description}
+<meta name="description" content="{MetaDescription}">
+{/block:Description}{/block:IndexPage}
 
-{block:IndexPage}
-{block:Description}<meta name="description" content="{MetaDescription}">{/block:Description}
-{/block:IndexPage}
-{block:PermalinkPage}<meta name="description" content="{PostSummary}">{/block:PermalinkPage}
+{block:PermalinkPage}
+<meta name="description" content="{PostSummary}">
+{/block:PermalinkPage}
 
 <meta name="author" content="{Name}"> <!--Maybe have this as a text: variable-->
 <meta name="designer" content="Tigt"> <!-- (!) Put your name/brand here! Doesn't appear to accept URLS. Nothing really supports it yet, but it's a nice little credit to have. -->
@@ -225,10 +225,12 @@ audio, canvas, img, svg, video {
 
 <link rel="alternate" type="application/rss+xml" title="{lang:RSS feed}" href="{RSS}" />
 
+<!-- Search engine tags -->
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <link rel="canonical" href="{Permalink}"><!--Test on non-post pages-->
 <link rel="shortlink" href="{ShortURL}"><!--Test on non-post pages-->
 
+<!-- Icons, colors, and other browser/OS integrations -->
 <link rel="shortcut icon" href="{Favicon}" />
 <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
 <meta name="theme-color" content="{AccentColor}">
@@ -420,11 +422,12 @@ audio, canvas, img, svg, video {
 <main>
 
 Enable custom 404 code for when search doesn't find anything
-Open posts: tags as classes?, other identifiers
+{block:Posts} tags as classes?, other identifiers
 <article>
 
 
 Close post types
+<footer>
 Post-info: Permalink, timestamp, source, reblogged from
 
 {block:HasTags}
@@ -433,39 +436,37 @@ Post-info: Permalink, timestamp, source, reblogged from
 
 {block:IfDisqusShortname}
 {block:PermalinkPage}
-<section class="comments">
-<div id="disqus_thread"></div>
-<script>(function(){var dsq=document.createElement('script');dsq.type='text/javascript';dsq.async=true;dsq.src='http://{text:Disqus Shortname}.disqus.com/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
-<noscript>{lang:Blog comments powered by Disqus 2}</a></noscript>
-</section>
+	<aside class="comments">
+	<div id="disqus_thread"></div>
+	<script>(function(){var dsq=document.createElement('script');dsq.type='text/javascript';dsq.async=true;dsq.src='http://{text:Disqus Shortname}.disqus.com/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+	<noscript>{lang:Blog comments powered by Disqus 2}</a></noscript>
+	</aside>
 {/block:PermalinkPage}
 {/block:IfDisqusShortname}
+</footer>
+</article>{/block:Posts}
 
-</article>
-Close posts
 </main>
 <footer>
     
-    {block:Pagination}
-        <nav>
-        {block:PreviousPage}
-            <a href="{PreviousPage}" rel="prev"></a>
-        {/block:PreviousPage}
-        {block:NextPage}
-            <a href="{NextPage}" rel="next"></a>
-        {/block:NextPage}
-        </nav>
-    {/block:Pagination}
-    {block:PermalinkPagination}
-        <nav>
-        {block:PreviousPost}
-            <a href="{PreviousPost}" rel="prev"></a>
-        {/block:PreviousPost}
-        {block:NextPost}
-            <a href="{NextPost}" rel="next"></a>
-        {/block:NextPost}
-        </nav>
-    {/block:PermalinkPagination}
+{block:Pagination}<nav>
+	{block:PreviousPage}
+	    <a href="{PreviousPage}" rel="prev"> </a>
+	{/block:PreviousPage}
+	{block:NextPage}
+	    <a href="{NextPage}" rel="next"> </a>
+	{/block:NextPage}
+</nav>{/block:Pagination}
+
+{block:PermalinkPagination}<nav>
+	{block:PreviousPost}
+	    <a href="{PreviousPost}" rel="prev"> </a>
+	{/block:PreviousPost}
+	{block:NextPost}
+	    <a href="{NextPost}" rel="next"> </a>
+	{/block:NextPost}
+</nav>{/block:PermalinkPagination}
+
 </footer>
 
 
