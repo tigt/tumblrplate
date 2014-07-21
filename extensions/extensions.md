@@ -35,4 +35,7 @@
 {/block:SubmissionsEnabled}
 ```
 
-##Subsetted icon font?
+##Sharing options
+
+sms: protocol for text messages?
+list a bunch of URL queries if the designers wish to include various sites
