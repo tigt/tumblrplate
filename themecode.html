@@ -1,4 +1,4 @@
-<html {block:IfRightToLeftLanguage}dir="rtl" {/block:IfRightToLeftLanguage}lang="{block:IfISOLanguageCode}{text:ISO Language Code}{/block:IfISOLanguageCode}{block:IfNotISOLanguageCode}{block:English}en{/block:English}{block:German}de{/block:German}{block:French}fr{/block:French}{block:Italian}it{/block:Italian}{block:Japanese}ja{/block:Japanese}{block:Turkish}tr{/block:Turkish}{block:Spanish}es{/block:Spanish}{block:Russian}ru{/block:Russian}{block:Polish}pl{/block:Polish}{block:PortuguesePT}pt-pt{/block:PortuguesePT}{block:PortugueseBR}pt-br{/block:PortugueseBR}{block:Dutch}nl{/block:Dutch}{block:Korean}ko{/block:Korean}{/block:IfNotISOLanguageCode}">
+<html lang="{block:English}en{/block:English}{block:German}de{/block:German}{block:French}fr{/block:French}{block:Italian}it{/block:Italian}{block:Japanese}ja{/block:Japanese}{block:Turkish}tr{/block:Turkish}{block:Spanish}es{/block:Spanish}{block:Russian}ru{/block:Russian}{block:Polish}pl{/block:Polish}{block:PortuguesePT}pt-pt{/block:PortuguesePT}{block:PortugueseBR}pt-br{/block:PortugueseBR}{block:Dutch}nl{/block:Dutch}{block:Korean}ko{/block:Korean}">
 <head>{block:Hidden}
   ________                   _  __
  /_  __/ /  ___ __ _  ___   / |/ /__ ___ _  ___
@@ -23,10 +23,7 @@ including the the above placard would be nice. (One might even call it... a boil
 
 
 
-<meta name="text:ISO Language Code" content="">
-<meta name="if:Right to left language" content="0">
-<meta name="if:Public group blog authors" content="0"> --> link rel=author for each contributor
-<meta name="if:Turn on copyright" content="0"> --><link rel="copyright" href="#copyright">
+<meta name="if:Public group blog mode" content="0"> --> link rel=author for each contributor
 
 <meta name="text:Disqus shortname" content="">
 <meta name="text:Google Analytics ID" content="">
@@ -471,7 +468,7 @@ Post-info: Permalink, timestamp, source, reblogged from
 
 
 
-{block:IfGoogleAnalyticsID}<!-- credit to HTML5Boilerplateteam-->
+{block:IfGoogleAnalyticsID}<!-- credit to HTML5Boilerplate team-->
 <script>(function(t,b,r,p,l,t){t.GoogleAnalyticsObject=p;t[p]||(t[p]=function(){(t[p].q=t[p].q||[]).push(arguments)});t[p].p=+new Date;l=b.createElement(r);t=b.getElementsByTagName(r)[0];l.src='//www.google-analytics.com/analytics.js';t.parentNode.insertBefore(l,t)}(window,document,'script','ga'));ga('create','{text:GoogleAnalyticsID}');ga('send','pageview');</script>
 {/block:IfGoogleAnalyticsID}
 </body></html>
