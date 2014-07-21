@@ -10,17 +10,15 @@
  ├─ themeauthor.tumblr.com
  ├─ @twitter
  ├─ +yougettheidea
-╒╧═══════════════════════════════╕ 
+╒╧═══════════════════════════════╕
 │'     ᴘʀᴏᴜᴅʟʏ ʙᴜɪʟᴛ ᴡɪᴛʜ       '│
 │   -=ＴＵＭＢＬＲＰＬＡＴＥ=-   │
 │.     [ti.gt/tumblrplate]      .│
 ╘════════════════════════════════╛
 
-...Tumblrplate is a framework for creating powerful, fast Tumblr themes.
-For instructions, explanations, updates, credits, and plugins/extensions, visit http://ti.gt/tumblrplate/.
-Feel free to replace this information, but if you want to support this project,
-including the the above placard would be nice. (One might even call it... a boilerplate.)
-
+-Tumblrplate is a framework for creating powerful, fast Tumblr themes.
+-For instructions, explanations, updates, credits, and plugins/extensions, visit ti.gt/tumblrplate
+-Feel free to replace this information, unless you want to support the project.
 
 
 <meta name="if:Public group blog mode" content="0"> --> link rel=author for each contributor
@@ -31,16 +29,13 @@ including the the above placard would be nice. (One might even call it... a boil
 
 {/block:Hidden}
 <!-- Test if these prefetches actually make anything faster -->
-<link rel="dns-prefetch" href="https://secure.assets.tumblr.com/"><link rel="dns-prefetch" href="http://static.tumblr.com/">
-
+<!-- assets.tumblr & static.tumblr should be loaded too early to bother prefetching -->
+<link rel="dns-prefetch" href="https://secure.assets.tumblr.com/">
+{block:IfGoogleAnalyticsID}<link rel="dns-prefetch" href="//google-analytics.com/">{/block:IfGoogleAnalyticsID}
 <!--[if IE 6]><![endif]--><!--This conditional comment fixes some loading issues with IE8-->
-<style>
-*, *:after, *:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-}
+<style>/*Testing some Tumblr-specific normalization styles*/
+
+/*Separate CSS file(s) may not be a good idea; static.tumblr.com serves saying no-cache and doesn't gzip, but you do at least get 304 Not Modified*/
 html {
   font-family: sans-serif;
   -moz-text-size-adjust: auto;
@@ -70,7 +65,7 @@ audio, canvas, progress, video {
     display: inline-block;
     vertical-align: baseline;
 }
-[hidden], template {
+[hidden] {
     display: none;
 }
 a {
@@ -197,15 +192,11 @@ audio, canvas, img, svg, video {
     {CustomCSS}
 </style>
 
-<!-- This fixes some ugly corners and enables (semi)transparent borders, has to be set last or loses effect -->
-<style>*,*:before,*:after{background-clip: padding-box;}</style>
+<!-- http://css-tricks.com/international-box-sizing-awareness-day/ - keep the separate style tags! -->
+<style>html{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}*,:before,:after{box-sizing:inherit;}</style>
     
 <!-- create more efficient HTML5shiv functionality?-->
 <!--[if lt IE 9]><script src="http://static.tumblr.com/hriofhd/Qj0m8pn7q/html5shiv.js"></script><![endif]-->
-
-<!-- These meta tags are for smartphones. If your theme is unsuitable for mobile, you can delete them-->
-<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui" />
-<meta name="format-detection" content="telephone=no, address=no" />
 
 <title>{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{block:TagPage}#{Tag} - {/block:TagPage}{block:PermalinkPage}{block:PostTitle}{PostTitle} - {/block:PostTitle}{block:PermalinkPage}{block:DayPage}{lang:Posted on Month DayOfMonth Year} - {/block:DayPage}{Title}</title>
 {block:IndexPage}{block:Description}
@@ -217,13 +208,16 @@ audio, canvas, img, svg, video {
 {/block:PermalinkPage}
 
 <meta name="author" content="{Name}"> <!--Maybe have this as a text: variable-->
-<meta name="designer" content="Tigt"> <!-- (!) Put your name/brand here! Doesn't appear to accept URLS. Nothing really supports it yet, but it's a nice little credit to have. -->
+<meta name="designer" content="Tigt - http://ti.gt/"> <!-- (!) Put yourself here! It's a nice little credit. -->
 <meta name="generator" content="Tumblr">
 
-<link rel="alternate" type="application/rss+xml" title="{lang:RSS feed}" href="{RSS}" />
+<link rel="alternate" type="application/rss+xml" title="{lang:RSS feed}&mdash;{Title}" href="{RSS}" />
+
+<!-- These meta tags are for smartphones. If your theme is unsuitable for mobile, you can delete them-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="format-detection" content="telephone=no, address=no">
 
 <!-- Search engine tags -->
-<link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <link rel="canonical" href="{Permalink}"><!--Test on non-post pages-->
 <link rel="shortlink" href="{ShortURL}"><!--Test on non-post pages-->
 
@@ -238,168 +232,166 @@ audio, canvas, img, svg, video {
 
 
 <!-- Preliminary fixup by ialreadydontlikeyou.tumblr.com-->
-        {block:IndexPage}
-          <!-- Your title & description Meta tags for the index pages of your tumblr, including Tumblr theme tags for search and tag pages-->
-        <title>{block:TagPage}&quot;{PlaintextTag}&quot; - {/block:TagPage}{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{Title}</title>
-        <meta name="Description" content="{MetaDescription}" />
-        {/block:IndexPage}
-        {block:PermalinkPage}
-          <!-- Your title & description Meta tags for the permalink (individual post) pages of your tumblr, The {PostSummary} tag is effective because it will still insert an indvividual post title if available or if your post type doesn't have a title, it will pull copy from your post's caption or description-->
-        <title>{block:PostSummary}{PlaintextPostSummary} - {/block:PostSummary}{Title}</title>
-        <meta name="Description" content="{MetaDescription}" />
-        {/block:PermalinkPage}
-        {block:PermalinkPage}
-        {block:Posts}
-        {block:Date}
-            <!-- Canonical h5bp.com/docs/head-Tips/#urls -->
-            <link rel="canonical" href="{Permalink}">
-            <!-- Shortlink h5bp.com/docs/head-Tips/#urls -->
-            <link rel="shortlink" href="{ShortURL}">
-        {/block:Date}
-        {/block:Posts}
-        {/block:PermalinkPage}
+{block:IndexPage}
+  <!-- Your title & description Meta tags for the index pages of your tumblr, including Tumblr theme tags for search and tag pages-->
+<title>{block:TagPage}&quot;{PlaintextTag}&quot; - {/block:TagPage}{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{Title}</title>
+<meta name="Description" content="{MetaDescription}" />
+{/block:IndexPage}
+{block:PermalinkPage}
+  <!-- Your title & description Meta tags for the permalink (individual post) pages of your tumblr, The {PostSummary} tag is effective because it will still insert an indvividual post title if available or if your post type doesn't have a title, it will pull copy from your post's caption or description-->
+<title>{block:PostSummary}{PlaintextPostSummary} - {/block:PostSummary}{Title}</title>
+<meta name="Description" content="{MetaDescription}" />
+{/block:PermalinkPage}
+{block:PermalinkPage}
+{block:Posts}
+    <!-- Canonical h5bp.com/docs/head-Tips/#urls -->
+    <link rel="canonical" href="{Permalink}">
+{block:Date}
+    <!-- Shortlink h5bp.com/docs/head-Tips/#urls -->
+    <link rel="shortlink" href="{ShortURL}">
+{/block:Date}
+{/block:Posts}
+{/block:PermalinkPage}
 
-        <!-- FACEBOOK OPEN GRAPH -->
-        <meta property="og:site_name" content="{Title}"/>
-        {block:IndexPage}
-                <meta property="og:title" content="{block:TagPage}&quot;{PlaintextTag}&quot; - {/block:TagPage}{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{Title}"/>
-                <meta property="og:url" content="{blogURL}{block:TagPage}tagged/{URLSafeTag}{/block:TagPage}"/>
-                <meta property="og:type" content="blog" />
-                <meta property="og:description" content="{MetaDescription} {block:TagPage}{PlaintextDescription}{/block:TagPage}"/>
-                <meta property="og:image" content="{PortraitURL-512}"/>
-        {/block:IndexPage}        
-        
-        
-        
-        {block:PermalinkPage}
-            <meta property="og:url" content="{Permalink}"/>
-            <meta property="og:type" content="article"/>
-        
-                {block:Posts}
-                    {block:Text}
-                        {block:Title}<meta property="og:title" content="{PlaintextTitle}"/>{/block:Title}
-                        <meta property="og:description" content="{PlaintextBody}"/>
-                        <meta property="og:image" content="{PortraitURL-128}"/>
-                    {/block:Text}
-        
-                    {block:Photo}
-                        <meta property="og:image" content="{PhotoURL-HighRes}"/>
-                        {block:Caption}<meta property="og:description" content="{PlaintextCaption}"/>{/block:Caption}
-                    {/block:Photo}
-        
-                    {block:Photoset}
-                        {block:Photos}
-                        <meta property="og:image" content="{PhotoURL-HighRes}"/>
-                        {/block:Photos}
-                        {block:Caption}<meta property="og:description" content="{PlaintextCaption}"/>{/block:Caption}
-                    {/block:Photoset}
-        
-                    {block:Quote}
-                        <meta property="og:title" content="{PlaintextQuote}"/>
-                        <meta property="og:description" content="{PlaintextSource}"/>
-                        <meta property="og:image" content="{PortraitURL-128}"/>
-                    {/block:Quote}
-        
-                    {block:Link}
-                        <meta property="og:title" content="{PlaintextName}"/>
-                        <meta property="og:description" content="{PlaintextDescription}"/>
-                        {block:Thumbnail}<meta property="og:image" content="{Thumbnail}"/>{/block:Thumbnail}
-                    {/block:Link}
-        
-                    {block:Chat}
-                        <meta property="og:title" content="{PlaintextTitle}"/>
-                        <meta property="og:description" content="{block:Lines}{block:Label}{Label}: {/block:Label}{Line} &bull; {/block:Lines}"/>
-                        <meta property="og:image" content="{PortraitURL-128}"/>
-                    {/block:Chat}
-        
-                    {block:Audio}
-                        <meta property="og:title" content="{block:Artist}{Artist} - {/block:Artist}{block:TrackName}{TrackName}{/block:TrackName}"/>
-                        <meta property="og:description" content="{PlaintextCaption}"/>
-                        {block:AlbumArt}<meta property="og:image" content="{AlbumArtURL}"/>{/block:AlbumArt}
-                    {/block:Audio}
-        
-                    {block:Video}
-                        {block:Caption}<meta property="og:description" content="{PlaintextCaption}"/>{/block:Caption}
-                        {block:VideoThumbnail}<meta property="og:image" content="{VideoThumbnailURL}"/>{/block:VideoThumbnail}
-                    {/block:Video}
-        
-                    {block:Answer}
-                        <meta property="og:title" content="{PlaintextQuestion}"/>
-                        <meta property="og:description" content="{PlaintextAnswer}"/>
-                        <meta property="og:image" content="{PortraitURL-128}"/>
-                    {/block:Answer}
-        
-                {/block:Posts}
-        
-        {/block:PermalinkPage}
+<!-- FACEBOOK OPEN GRAPH -->
+<meta property="og:site_name" content="{Title}"/>
+{block:IndexPage}
+        <meta property="og:title" content="{block:TagPage}#{PlaintextTag} - {/block:TagPage}{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{Title}"/>
+        <meta property="og:url" content="{blogURL}{block:TagPage}tagged/{URLSafeTag}{/block:TagPage}"/>
+        <meta property="og:type" content="blog" />
+        <meta property="og:description" content="{MetaDescription} {block:TagPage}{PlaintextDescription}{/block:TagPage}"/>
+        <meta property="og:image" content="{PortraitURL-128}"/>
+{/block:IndexPage}        
 
-        <!-- TWITTER META DATA -->
+{block:PermalinkPage}
+    <meta property="og:url" content="{Permalink}"/>
+    <meta property="og:type" content="article"/>
+
+{block:Posts}
+    {block:Text}
+        {block:Title}<meta property="og:title" content="{PlaintextTitle}"/>{/block:Title}
+        <meta property="og:description" content="{PlaintextBody}"/>
+        <meta property="og:image" content="{PortraitURL-128}"/>
+    {/block:Text}
+
+    {block:Photo}
+        <meta property="og:image" content="{PhotoURL-HighRes}"/>
+        {block:Caption}<meta property="og:description" content="{PlaintextCaption}"/>{/block:Caption}
+    {/block:Photo}
+
+    {block:Photoset}
+        {block:Photos}
+        <meta property="og:image" content="{PhotoURL-HighRes}"/>
+        {/block:Photos}
+        {block:Caption}<meta property="og:description" content="{PlaintextCaption}"/>{/block:Caption}
+    {/block:Photoset}
+
+    {block:Quote}
+        <meta property="og:title" content="{PlaintextQuote}"/>
+        <meta property="og:description" content="{PlaintextSource}"/>
+        <meta property="og:image" content="{PortraitURL-128}"/>
+    {/block:Quote}
+
+    {block:Link}
+        <meta property="og:title" content="{PlaintextName}"/>
+        <meta property="og:description" content="{PlaintextDescription}"/>
+        {block:Thumbnail}<meta property="og:image" content="{Thumbnail}"/>{/block:Thumbnail}
+    {/block:Link}
+
+    {block:Chat}
+        <meta property="og:title" content="{PlaintextTitle}"/>
+        <meta property="og:description" content="{block:Lines}{block:Label}{Label}: {/block:Label}{Line} &bull; {/block:Lines}"/>
+        <meta property="og:image" content="{PortraitURL-128}"/>
+    {/block:Chat}
+
+    {block:Audio}
+        <meta property="og:title" content="{block:Artist}{Artist} - {/block:Artist}{block:TrackName}{TrackName}{/block:TrackName}"/>
+        <meta property="og:description" content="{PlaintextCaption}"/>
+        {block:AlbumArt}<meta property="og:image" content="{AlbumArtURL}"/>{/block:AlbumArt}
+    {/block:Audio}
+
+    {block:Video}
+        {block:Caption}<meta property="og:description" content="{PlaintextCaption}"/>{/block:Caption}
+        {block:VideoThumbnail}<meta property="og:image" content="{VideoThumbnailURL}"/>{/block:VideoThumbnail}
+    {/block:Video}
+
+    {block:Answer}
+        <meta property="og:title" content="{PlaintextQuestion}"/>
+        <meta property="og:description" content="{PlaintextAnswer}"/>
+        <meta property="og:image" content="{PortraitURL-128}"/>
+    {/block:Answer}
+
+{/block:Posts}
+
+{/block:PermalinkPage}
+
+<!-- TWITTER META DATA -->
 {block:PermalinkPage}
 <meta name="twitter:url" content="{Permalink}"/>
 <meta name="twitter:site" content="@username"><!-- replace with your twitter username. include the '@' symbol too -->
- 
-    {block:Posts}
-        {block:Text}
-            <meta name="twitter:card" content="summary">
-            {block:Title}<meta name="twitter:title" content="{PlaintextTitle}"/>{/block:Title}
-            <meta name="twitter:description" content="{PlaintextBody}"/>
-            <meta name="twitter:image" content="{PortraitURL-128}"/>
-        {/block:Text}
- 
-        {block:Photo}
-            <meta name="twitter:card" content="photo">
-            <meta name="twitter:image" content="{PhotoURL-500}"/>
-            {block:Caption}<meta name="twitter:description" content="{PlaintextCaption}"/>{/block:Caption}
-        {/block:Photo}
- 
-        {block:Photoset}
-            <meta name="twitter:card" content="photo">
-            {block:Photos}<meta name="twitter:image" content="{PhotoURL-500}"/>{/block:Photos}
-            {block:Caption}<meta name="twitter:description" content="{PlaintextCaption}"/>{/block:Caption}
-        {/block:Photoset}
- 
-        {block:Quote}
-            <meta name="twitter:card" content="summary">
-            <meta name="twitter:title" content="{PlaintextQuote}"/>
-            <meta name="twitter:description" content="{PlaintextSource}"/>
-            <meta name="twitter:image" content="{PortraitURL-128}"/>
-        {/block:Quote}
- 
-        {block:Link}
-            <meta name="twitter:card" content="summary">
-            <meta name="twitter:title" content="{PlaintextName}"/>
-            <meta name="twitter:description" content="{PlaintextDescription}"/>
-            {block:Thumbnail}<meta name="twitter:image" content="{Thumbnail}"/>{/block:Thumbnail}
-        {/block:Link}
- 
-        {block:Chat}
-            <meta name="twitter:card" content="summary">
-            <meta name="twitter:title" content="{PlaintextTitle}"/>
-            <meta name="twitter:description" content="{block:Lines}{block:Label}{Label}: {/block:Label}{Line} &bull; {/block:Lines}"/>
-            <meta name="twitter:image" content="{PortraitURL-128}"/>
-        {/block:Chat}
- 
-        {block:Audio}
-            <meta name="twitter:card" content="summary">
-            <meta name="twitter:title" content="{block:Artist}{Artist} - {/block:Artist}{block:TrackName}{TrackName}{/block:TrackName}"/>
-            <meta name="twitter:description" content="{PlaintextCaption}"/>
-            {block:AlbumArt}<meta name="twitter:image" content="{AlbumArtURL}"/>{/block:AlbumArt}
-        {/block:Audio}
- 
-        {block:Video}
-            <meta name="twitter:card" content="summary">
-            <meta name="twitter:title" content="{PlaintextTitle}"/>
-            {block:Caption}<meta name="twitter:description" content="{PlaintextCaption}"/>{/block:Caption}
-            {block:VideoThumbnail}<meta name="twitter:image" content="{VideoThumbnailURL}"/>{/block:VideoThumbnail}
-        {/block:Video}
- 
-        {block:Answer}
-            <meta name="twitter:card" content="summary">
-            <meta name="twitter:title" content="{PlaintextQuestion}"/>
-            <meta name="twitter:description" content="{PlaintextAnswer}"/>
-            <meta name="twitter:image" content="{PortraitURL-512}"/>
-        {/block:Answer}
-    {/block:Posts}
+
+{block:Posts}
+{block:Text}
+    <meta name="twitter:card" content="summary">
+    {block:Title}<meta name="twitter:title" content="{PlaintextTitle}"/>{/block:Title}
+    <meta name="twitter:description" content="{PlaintextBody}"/>
+    <meta name="twitter:image" content="{PortraitURL-128}"/>
+{/block:Text}
+
+{block:Photo}
+    <meta name="twitter:card" content="photo">
+    <meta name="twitter:image" content="{PhotoURL-500}"/>
+    {block:Caption}<meta name="twitter:description" content="{PlaintextCaption}"/>{/block:Caption}
+{/block:Photo}
+
+{block:Photoset}
+    <meta name="twitter:card" content="photo">
+    {block:Photos}<meta name="twitter:image" content="{PhotoURL-500}"/>{/block:Photos}
+    {block:Caption}<meta name="twitter:description" content="{PlaintextCaption}"/>{/block:Caption}
+{/block:Photoset}
+
+{block:Quote}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{PlaintextQuote}"/>
+    <meta name="twitter:description" content="{PlaintextSource}"/>
+    <meta name="twitter:image" content="{PortraitURL-128}"/>
+{/block:Quote}
+
+{block:Link}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{PlaintextName}"/>
+    <meta name="twitter:description" content="{PlaintextDescription}"/>
+    {block:Thumbnail}<meta name="twitter:image" content="{Thumbnail}"/>{/block:Thumbnail}
+{/block:Link}
+
+{block:Chat}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{PlaintextTitle}"/>
+    <meta name="twitter:description" content="{block:Lines}{block:Label}{Label}: {/block:Label}{Line} &bull; {/block:Lines}"/>
+    <meta name="twitter:image" content="{PortraitURL-128}"/>
+{/block:Chat}
+
+{block:Audio}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{block:Artist}{Artist} - {/block:Artist}{block:TrackName}{TrackName}{/block:TrackName}"/>
+    <meta name="twitter:description" content="{PlaintextCaption}"/>
+    {block:AlbumArt}<meta name="twitter:image" content="{AlbumArtURL}"/>{/block:AlbumArt}
+{/block:Audio}
+
+{block:Video}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{PlaintextTitle}"/>
+    {block:Caption}<meta name="twitter:description" content="{PlaintextCaption}"/>{/block:Caption}
+    {block:VideoThumbnail}<meta name="twitter:image" content="{VideoThumbnailURL}"/>{/block:VideoThumbnail}
+{/block:Video}
+
+{block:Answer}
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{PlaintextQuestion}"/>
+    <meta name="twitter:description" content="{PlaintextAnswer}"/>
+    <meta name="twitter:image" content="{PortraitURL-128}"/>
+{/block:Answer}
+{/block:Posts}
 {/block:PermalinkPage}
 
 </head>
@@ -469,6 +461,6 @@ Post-info: Permalink, timestamp, source, reblogged from
 
 
 {block:IfGoogleAnalyticsID}<!-- credit to HTML5Boilerplate team-->
-<script>(function(t,b,r,p,l,t){t.GoogleAnalyticsObject=p;t[p]||(t[p]=function(){(t[p].q=t[p].q||[]).push(arguments)});t[p].p=+new Date;l=b.createElement(r);t=b.getElementsByTagName(r)[0];l.src='//www.google-analytics.com/analytics.js';t.parentNode.insertBefore(l,t)}(window,document,'script','ga'));ga('create','{text:GoogleAnalyticsID}');ga('send','pageview');</script>
+<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','{GoogleAnalyticsID}','auto');ga('send','pageview');</script>
 {/block:IfGoogleAnalyticsID}
 </body></html>
