@@ -16,15 +16,63 @@
 │.     [ti.gt/tumblrplate]      .│
 ╘════════════════════════════════╛
 
--Tumblrplate is a framework for creating powerful, fast Tumblr themes.
--For instructions, explanations, updates, credits, and plugins/extensions, visit ti.gt/tumblrplate
--Feel free to replace this information, unless you want to support the project.
+ - Tumblrplate is a framework for creating powerful, fast Tumblr themes.
+ - For instructions, explanations, updates, credits, and plugins/extensions, visit ti.gt/tumblrplate
+ - Feel free to replace this text, unless you wish to support the project.
+
+--==Appearance Options inheritances==--
+
+Hide/Show Title
+Hide/Show Header Image
+Hide/Show Avatar
+Hide/Show Description
 
 
-<meta name="if:Public group blog mode" content="0"> --> link rel=author for each contributor
 
-<meta name="text:Disqus shortname" content="">
-<meta name="text:Google Analytics ID" content="">
+--==Theme Options==-- [These are sorted by type in Tumblr's control center; this cannot be changed.]
+
+1. image:
+	<meta name="image:Custom header image" content="{HeaderImage}">
+	<meta name="image:Custom 404 image" content="">
+
+
+2. color:
+	<meta name="color:Title color" content="{TitleColor}">
+	<meta name="color:Accent color" content="{AccentColor}">
+	<meta name="color:Background color" content="{BackgroundColor}">
+
+3. font:
+	<meta name="font:Title font" content="{TitleFont}">
+
+4. select:
+	<meta name="select:Avatar Shape" content="{AvatarShape}" title="Default">
+	<meta name="select:Avatar Shape" content="circle" title="Circle">
+	<meta name="select:Avatar Shape" content="square" title="Square">
+	<meta name="select:Avatar Shape" content=" " title="Others?">
+	
+	<meta name="select:Title weight" content="{TitleFontWeight}" title="Default">
+	<meta name="select:Title weight" content="normal" title="Normal">
+	<meta name="select:Title weight" content="bold" title="Bold">
+	
+	<meta name="select:Header image display" content=" " title="Default">
+	<meta name="select:Header image display" content=" " title="Normal">
+	<meta name="select:Header image display" content=" " title="Stretch">
+	<meta name="select:Header image display" content=" " title="Hide">
+
+5. if:
+	<meta name="if:Public blog members" content="0"> --> link rel=author for each contributor
+	<meta name="if:Twitter widget" content="0">
+	<meta name="if:Show Title" content="0">
+	<meta name="if:Show Description" content="0">
+	<meta name="if:Show Avatar" content="0">
+	<meta name="if:Show Header" content="0">
+	<meta name="if:Show Likes" content="0">
+	<meta name="if:Show following" content="0">
+
+6. text:
+	<meta name="text:Custom 404 message" content="">
+	<meta name="text:Disqus shortname" content="">
+	<meta name="text:Google Analytics ID" content="">
 
 
 {/block:Hidden}
@@ -42,7 +90,6 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-
 ::-moz-selection{
   background: #FF5E99; color:#fff; --make theme variable
   text-shadow:none;
@@ -187,31 +234,38 @@ audio, canvas, img, svg, video {
     }
 }
 
-    xKit-replies styling for best results
+/*Custom 404 page content code*/
+
+{block:PermalinkPage}{block:Text}{block:Title}
+article[data-404check="{block:English}Not Found{/block:English}{block:German}Nicht gefunden{/block:German}{block:French}Page introuvable{/block:French}{block:Italian}Non Trovato{/block:Italian}{block:Japanese}ページが見つかりません{/block:Japanese}{block:Turkish}Bulunamadı{/block:Turkish}{block:Spanish}No encontrado{/block:Spanish}{block:Russian}Не найдено{/block:Russian}{block:Polish}Nie znaleziono strony{/block:Polish}{block:PortuguesePT}Não encontrado{/block:PortuguesePT}{block:PortugueseBR}Página não encontrada{/block:PortugueseBR}{block:Dutch}Niet gevonden{/block:Dutch}{block:Korean}결과 없음{/block:Korean}"]:before {
+	content: url({image:Custom404Image}) "\a {text:Custom404Message} \a ";
+	white-space: pre-wrap;
+}
+{/block:Title}{/block:Text}{/block:PermalinkPage}
     
-    {CustomCSS}
+/*xKit-replies styling for best results*/
+
+{CustomCSS}
 </style>
 
-<!-- http://css-tricks.com/international-box-sizing-awareness-day/ - keep the separate style tags! -->
+<!-- css-tricks.com/international-box-sizing-awareness-day/ - keep the separate style tags! -->
 <style>html{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}*,:before,:after{box-sizing:inherit;}</style>
     
 <!-- create more efficient HTML5shiv functionality?-->
 <!--[if lt IE 9]><script src="http://static.tumblr.com/hriofhd/Qj0m8pn7q/html5shiv.js"></script><![endif]-->
 
 <title>{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{block:TagPage}#{Tag} - {/block:TagPage}{block:PermalinkPage}{block:PostTitle}{PostTitle} - {/block:PostTitle}{block:PermalinkPage}{block:DayPage}{lang:Posted on Month DayOfMonth Year} - {/block:DayPage}{Title}</title>
-{block:IndexPage}{block:Description}
+{block:Description}
 <meta name="description" content="{MetaDescription}">
-{/block:Description}{/block:IndexPage}
+{/block:Description}
 
-{block:PermalinkPage}
-<meta name="description" content="{PostSummary}">
-{/block:PermalinkPage}
 
-<meta name="author" content="{Name}"> <!--Maybe have this as a text: variable-->
+<meta name="author" content="{Name}"> <!--Maybe have this as a text: variable, Twitter username, etc.-->
 <meta name="designer" content="Tigt - http://ti.gt/"> <!-- (!) Put yourself here! It's a nice little credit. -->
 <meta name="generator" content="Tumblr">
 
-<link rel="alternate" type="application/rss+xml" title="{lang:RSS feed}&mdash;{Title}" href="{RSS}" />
+<!-- This isn't the only RSS feed Tumblr generates; consider ../podcast.xml, etc. -->
+<link rel="alternate" type="application/rss+xml" title="{lang:RSS feed}&mdash;{Title}" href="{RSS}">
 
 <!-- These meta tags are for smartphones. If your theme is unsuitable for mobile, you can delete them-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -222,7 +276,7 @@ audio, canvas, img, svg, video {
 <link rel="shortlink" href="{ShortURL}"><!--Test on non-post pages-->
 
 <!-- Icons, colors, and other browser/OS integrations -->
-<link rel="shortcut icon" href="{Favicon}" />
+<link rel="shortcut icon" href="{Favicon}">
 <link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
 <meta name="theme-color" content="{AccentColor}">
 
@@ -230,17 +284,18 @@ audio, canvas, img, svg, video {
 
 <!-- Modified Tumblr's default Twitter Card tags --><!--<meta charset="utf-8"> Remove?--><meta name="twitter:site" content="tumblr" /><meta name="twitter:card" content="summary" /><meta name="twitter:title" content="tigts" /><meta name="twitter:description" content="{MetaDescription}" /><meta name="twitter:app:name:iphone" content="Tumblr" /><meta name="twitter:app:name:ipad" content="Tumblr" /><meta name="twitter:app:name:googleplay" content="Tumblr" /><meta name="twitter:app:id:iphone" content="305343404" /><meta name="twitter:app:id:ipad" content="305343404" /><meta name="twitter:app:id:googleplay" content="com.tumblr" /><meta name="twitter:app:url:iphone" content="tumblr://x-callback-url/blog?blogName={Name}&amp;referrer=twitter-cards" /><meta name="twitter:app:url:ipad" content="tumblr://x-callback-url/blog?blogName={Name}&amp;referrer=twitter-cards" /><meta name="twitter:app:url:googleplay" content="tumblr://x-callback-url/blog?blogName={Name}&amp;referrer=twitter-cards" />
 
+dev.twitter.com/docs/cards/twitter-cards-for-cms-wordpress-blogger-tumblr#tumblr
 
 <!-- Preliminary fixup by ialreadydontlikeyou.tumblr.com-->
 {block:IndexPage}
   <!-- Your title & description Meta tags for the index pages of your tumblr, including Tumblr theme tags for search and tag pages-->
 <title>{block:TagPage}&quot;{PlaintextTag}&quot; - {/block:TagPage}{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{Title}</title>
-<meta name="Description" content="{MetaDescription}" />
+<meta name="Description" content="{MetaDescription}">
 {/block:IndexPage}
 {block:PermalinkPage}
   <!-- Your title & description Meta tags for the permalink (individual post) pages of your tumblr, The {PostSummary} tag is effective because it will still insert an indvividual post title if available or if your post type doesn't have a title, it will pull copy from your post's caption or description-->
 <title>{block:PostSummary}{PlaintextPostSummary} - {/block:PostSummary}{Title}</title>
-<meta name="Description" content="{MetaDescription}" />
+<meta name="Description" content="{MetaDescription}">
 {/block:PermalinkPage}
 {block:PermalinkPage}
 {block:Posts}
@@ -254,13 +309,13 @@ audio, canvas, img, svg, video {
 {/block:PermalinkPage}
 
 <!-- FACEBOOK OPEN GRAPH -->
-<meta property="og:site_name" content="{Title}"/>
+<meta property="og:site_name" content="{Title}">
 {block:IndexPage}
-        <meta property="og:title" content="{block:TagPage}#{PlaintextTag} - {/block:TagPage}{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{Title}"/>
-        <meta property="og:url" content="{blogURL}{block:TagPage}tagged/{URLSafeTag}{/block:TagPage}"/>
-        <meta property="og:type" content="blog" />
-        <meta property="og:description" content="{MetaDescription} {block:TagPage}{PlaintextDescription}{/block:TagPage}"/>
-        <meta property="og:image" content="{PortraitURL-128}"/>
+<meta property="og:title" content="{block:TagPage}#{PlaintextTag} - {/block:TagPage}{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{Title}"/>
+<meta property="og:url" content="{blogURL}{block:TagPage}tagged/{URLSafeTag}{/block:TagPage}">
+<meta property="og:type" content="blog">
+<meta property="og:description" content="{MetaDescription} {block:TagPage}{PlaintextDescription}{/block:TagPage}"/>
+<meta property="og:image" content="{PortraitURL-128}">
 {/block:IndexPage}        
 
 {block:PermalinkPage}
@@ -268,58 +323,58 @@ audio, canvas, img, svg, video {
     <meta property="og:type" content="article"/>
 
 {block:Posts}
-    {block:Text}
-        {block:Title}<meta property="og:title" content="{PlaintextTitle}"/>{/block:Title}
-        <meta property="og:description" content="{PlaintextBody}"/>
-        <meta property="og:image" content="{PortraitURL-128}"/>
-    {/block:Text}
+{block:Text}
+{block:Title}<meta property="og:title" content="{PlaintextTitle}"/>{/block:Title}
+<meta property="og:description" content="{PlaintextBody}"/>
+<meta property="og:image" content="{PortraitURL-128}"/>
+{/block:Text}
 
-    {block:Photo}
-        <meta property="og:image" content="{PhotoURL-HighRes}"/>
-        {block:Caption}<meta property="og:description" content="{PlaintextCaption}"/>{/block:Caption}
-    {/block:Photo}
+{block:Photo}
+<meta property="og:image" content="{PhotoURL-HighRes}"/>
+{block:Caption}<meta property="og:description" content="{PlaintextCaption}"/>{/block:Caption}
+{/block:Photo}
 
-    {block:Photoset}
-        {block:Photos}
-        <meta property="og:image" content="{PhotoURL-HighRes}"/>
-        {/block:Photos}
-        {block:Caption}<meta property="og:description" content="{PlaintextCaption}"/>{/block:Caption}
-    {/block:Photoset}
+{block:Photoset}
+{block:Photos}
+<meta property="og:image" content="{PhotoURL-HighRes}"/>
+{/block:Photos}
+{block:Caption}<meta property="og:description" content="{PlaintextCaption}"/>{/block:Caption}
+{/block:Photoset}
 
-    {block:Quote}
-        <meta property="og:title" content="{PlaintextQuote}"/>
-        <meta property="og:description" content="{PlaintextSource}"/>
-        <meta property="og:image" content="{PortraitURL-128}"/>
-    {/block:Quote}
+{block:Quote}
+<meta property="og:title" content="{PlaintextQuote}"/>
+<meta property="og:description" content="{PlaintextSource}"/>
+<meta property="og:image" content="{PortraitURL-128}"/>
+{/block:Quote}
 
-    {block:Link}
-        <meta property="og:title" content="{PlaintextName}"/>
-        <meta property="og:description" content="{PlaintextDescription}"/>
-        {block:Thumbnail}<meta property="og:image" content="{Thumbnail}"/>{/block:Thumbnail}
-    {/block:Link}
+{block:Link}
+<meta property="og:title" content="{PlaintextName}"/>
+<meta property="og:description" content="{PlaintextDescription}"/>
+{block:Thumbnail}<meta property="og:image" content="{Thumbnail}"/>{/block:Thumbnail}
+{/block:Link}
 
-    {block:Chat}
-        <meta property="og:title" content="{PlaintextTitle}"/>
-        <meta property="og:description" content="{block:Lines}{block:Label}{Label}: {/block:Label}{Line} &bull; {/block:Lines}"/>
-        <meta property="og:image" content="{PortraitURL-128}"/>
-    {/block:Chat}
+{block:Chat}
+<meta property="og:title" content="{PlaintextTitle}"/>
+<meta property="og:description" content="{block:Lines}{block:Label}{Label}: {/block:Label}{Line} &bull; {/block:Lines}"/>
+<meta property="og:image" content="{PortraitURL-128}"/>
+{/block:Chat}
 
-    {block:Audio}
-        <meta property="og:title" content="{block:Artist}{Artist} - {/block:Artist}{block:TrackName}{TrackName}{/block:TrackName}"/>
-        <meta property="og:description" content="{PlaintextCaption}"/>
-        {block:AlbumArt}<meta property="og:image" content="{AlbumArtURL}"/>{/block:AlbumArt}
-    {/block:Audio}
+{block:Audio}
+<meta property="og:title" content="{block:Artist}{Artist} - {/block:Artist}{block:TrackName}{TrackName}{/block:TrackName}"/>
+<meta property="og:description" content="{PlaintextCaption}"/>
+{block:AlbumArt}<meta property="og:image" content="{AlbumArtURL}"/>{/block:AlbumArt}
+{/block:Audio}
 
-    {block:Video}
-        {block:Caption}<meta property="og:description" content="{PlaintextCaption}"/>{/block:Caption}
-        {block:VideoThumbnail}<meta property="og:image" content="{VideoThumbnailURL}"/>{/block:VideoThumbnail}
-    {/block:Video}
+{block:Video}
+{block:Caption}<meta property="og:description" content="{PlaintextCaption}"/>{/block:Caption}
+{block:VideoThumbnail}<meta property="og:image" content="{VideoThumbnailURL}"/>{/block:VideoThumbnail}
+{/block:Video}
 
-    {block:Answer}
-        <meta property="og:title" content="{PlaintextQuestion}"/>
-        <meta property="og:description" content="{PlaintextAnswer}"/>
-        <meta property="og:image" content="{PortraitURL-128}"/>
-    {/block:Answer}
+{block:Answer}
+<meta property="og:title" content="{PlaintextQuestion}"/>
+<meta property="og:description" content="{PlaintextAnswer}"/>
+<meta property="og:image" content="{PortraitURL-128}"/>
+{/block:Answer}
 
 {/block:Posts}
 
@@ -411,36 +466,88 @@ audio, canvas, img, svg, video {
 <main id="content" class="{block:SearchPage}search {block:NoSearchResults}404 {/block:NoSearchResults}{block:SearchPage}" >
 
 {block:Posts}
-<article class="{TagsAsClasses}" {block:Posts}{block:PermalinkPage}{block:Text}{block:Title}data-404check="{Title}"{/block:Title}{/block:Text}{/block:PermalinkPage}{/block:Posts}> other identifiers
+<article class="{PostType} {TagsAsClasses}" {block:PermalinkPage}{block:Text}{block:Title}data-404check="{Title}"{/block:Title}{/block:Text}{/block:PermalinkPage}>
 
-<!--
+{block:Text}
 
-article[data-404check="Not Found"] {
-	display:none;
-	}
-article[data-404check="Not Found"]:before {
-	insert custom 404 message; user-enterable image & message?
-}
+{/block:Text}
 
--->
 
-Close post types
+{block:Photo}
+
+{/block:Photo}
+
+
+{block:Panorama}
+
+{/block:Panorama}
+
+
+{block:Photoset}
+
+{/block:Photoset}
+
+
+{block:Quote}
+
+{/block:Quote}
+
+
+{block:Link}
+
+{/block:Link}
+
+
+{block:Chat}
+
+{/block:Chat}
+
+
+{block:Audio}
+
+{/block:Audio}
+
+
+{block:Video}
+
+{/block:Video}
+
+
+{block:Answer}
+
+{/block:Answer}
+
 <footer>
-Post-info: Permalink, timestamp, source, reblogged from
+reblogged from
 
-{block:HasTags}{block:Tags}<a href="{TagURL}" rel=tag title="{lang:Posts tagged Tag}">#{Tag}</a> {/block:Tags}{/block:HasTags}
+<a href="{Permalink}" rel="bookmark">{lang:Permalink}</a>
 
-{block:IfDisqusShortname}
-{block:PermalinkPage}
+{block:Date}<time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}T{24HourWithZero}:{Minutes}:{Seconds}">
+	<!--example visible timestamp--> {lang:Posted at FormattedTime}, {TimeAgo} <!--end example -->
+</time>{/block:Date}
+
+{block:ContentSource}
+<a href="{SourceURL}" cite="{SourceURL}">{SourceTitle}</a>
+{/block:ContentSource}
+
+{block:Submission}
+<a href="{SubmitterURL}" cite="{SubmitterURL}">{Submitter}</a>
+{/block:Submission}
+
+{block:HasTags}
+	{block:Tags}<a href="{TagURL}" rel=tag title="{lang:Posts tagged Tag}">#{Tag}</a> {/block:Tags}
+{/block:HasTags}
+
+{block:IfDisqusShortname}{block:PermalinkPage}
 	<aside class="comments">
 	<div id="disqus_thread"></div>
 	<script>(function(){var dsq=document.createElement('script');dsq.type='text/javascript';dsq.async=true;dsq.src='http://{text:Disqus Shortname}.disqus.com/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
 	<noscript>{lang:Blog comments powered by Disqus 2}</a></noscript>
 	</aside>
-{/block:PermalinkPage}
-{/block:IfDisqusShortname}
+{/block:PermalinkPage}{/block:IfDisqusShortname}
 </footer>
-</article>{/block:Posts}
+</article>
+{/block:Posts}
 
 </main>
 <footer>
