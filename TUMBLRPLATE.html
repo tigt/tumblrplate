@@ -29,7 +29,7 @@
 
 {/block:Hidden}
 <!-- Test if these prefetches actually make anything faster -->
-<!-- assets.tumblr & static.tumblr should be loaded too early to bother prefetching -->
+<!-- assets.tumblr & static.tumblr are/should be loaded too early to bother prefetching -->
 <link rel="dns-prefetch" href="https://secure.assets.tumblr.com/">
 {block:IfGoogleAnalyticsID}<link rel="dns-prefetch" href="//google-analytics.com/">{/block:IfGoogleAnalyticsID}
 <!--[if IE 6]><![endif]--><!--This conditional comment fixes some loading issues with IE8-->
@@ -402,26 +402,33 @@ audio, canvas, img, svg, video {
 <!--[if gt IE 9]><!--> <body> <!--<![endif]-->
 
 <header>
-  <h1>{Title}</h1>
-  <h2>{Description}</h2>
-	<nav>
-	</nav>
+<h1>{Title}</h1>
+<h2>{Description}</h2>
+<nav>
+</nav>
 </header>
 
-<main>
+<main id="content" class="{block:SearchPage}search {block:NoSearchResults}404 {/block:NoSearchResults}{block:SearchPage}" >
 
-Enable custom 404 code for when search doesn't find anything
-{block:Posts} tags as classes?, other identifiers
-<article>
+{block:Posts}
+<article class="{TagsAsClasses}" {block:Posts}{block:PermalinkPage}{block:Text}{block:Title}data-404check="{Title}"{/block:Title}{/block:Text}{/block:PermalinkPage}{/block:Posts}> other identifiers
 
+<!--
+
+article[data-404check="Not Found"] {
+	display:none;
+	}
+article[data-404check="Not Found"]:before {
+	insert custom 404 message; user-enterable image & message?
+}
+
+-->
 
 Close post types
 <footer>
 Post-info: Permalink, timestamp, source, reblogged from
 
-{block:HasTags}
-{block:Tags}<a href="{TagURL}" rel=tag title="{lang:Posts tagged Tag}">#{Tag}</a> {/block:Tags}
-{/block:HasTags}
+{block:HasTags}{block:Tags}<a href="{TagURL}" rel=tag title="{lang:Posts tagged Tag}">#{Tag}</a> {/block:Tags}{/block:HasTags}
 
 {block:IfDisqusShortname}
 {block:PermalinkPage}
