@@ -1,7 +1,7 @@
 tumblrplate
 ========================
 
-A boilerplate template for powerful, fast Tumblr themes, where the style is up to you.
+A boilerplate template for easy creation of Tumblr themes
 
 tumblrplate owes an obvious, significant debt to [HTML5 Boilerplate](http://html5boilerplate.com/), and it heavily lifts from [normalize.css](http://necolas.github.io/normalize.css/) as well. Proper in-project attribution with source links will follow once the structure starts making sense.
 
