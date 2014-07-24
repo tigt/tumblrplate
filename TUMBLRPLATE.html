@@ -1,5 +1,5 @@
 <html lang="{block:English}en{/block:English}{block:German}de{/block:German}{block:French}fr{/block:French}{block:Italian}it{/block:Italian}{block:Japanese}ja{/block:Japanese}{block:Turkish}tr{/block:Turkish}{block:Spanish}es{/block:Spanish}{block:Russian}ru{/block:Russian}{block:Polish}pl{/block:Polish}{block:PortuguesePT}pt-pt{/block:PortuguesePT}{block:PortugueseBR}pt-br{/block:PortugueseBR}{block:Dutch}nl{/block:Dutch}{block:Korean}ko{/block:Korean}">
-<head>{block:Hidden}
+<head prefix="og: http://ogp.me/ns#">{block:Hidden}
   ________                   _  __
  /_  __/ /  ___ __ _  ___   / |/ /__ ___ _  ___
   / / / _ \/ -_)  ' \/ -_) /    / _ `/  ' \/ -_)
@@ -20,21 +20,11 @@
  - For instructions, explanations, updates, credits, and plugins/extensions, visit ti.gt/tumblrplate
  - Feel free to replace this text, unless you wish to support the project.
 
---==Appearance Options inheritances==--
-
-Hide/Show Title
-Hide/Show Header Image
-Hide/Show Avatar
-Hide/Show Description
-
-
-
 --==Theme Options==-- [These are sorted by type in Tumblr's control center; this cannot be changed.]
 
 1. image:
 	<meta name="image:Custom header image" content="{HeaderImage}">
 	<meta name="image:Custom 404 image" content="">
-
 
 2. color:
 	<meta name="color:Title color" content="{TitleColor}">
@@ -76,176 +66,89 @@ Hide/Show Description
 
 
 {/block:Hidden}
+
 <!-- Test if these prefetches actually make anything faster -->
 <!-- assets.tumblr & static.tumblr are/should be loaded too early to bother prefetching -->
 <link rel="dns-prefetch" href="https://secure.assets.tumblr.com/">
 {block:IfGoogleAnalyticsID}<link rel="dns-prefetch" href="//google-analytics.com/">{/block:IfGoogleAnalyticsID}
+
 <!--[if IE 6]><![endif]--><!--This conditional comment fixes some loading issues with IE8-->
-<style>/*Testing some Tumblr-specific normalization styles*/
 
+<style>
 /*Separate CSS file(s) may not be a good idea; static.tumblr.com serves saying no-cache and doesn't gzip, but you do at least get 304 Not Modified*/
-html {
-  font-family: sans-serif;
-  -moz-text-size-adjust: auto;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-}
-::-moz-selection{
-  background: #FF5E99; color:#fff; --make theme variable
-  text-shadow:none;
-}
-::selection {
-	background:#FF5E99; color:#fff; --make theme variable
-	text-shadow:none;
-}
-a:link {
-	-webkit-tap-highlight-color: #FF5E99; --make theme variable
-}
-:focus {
-	outline-color: ;--make theme variable
-}
 
-details, main, summary {
-    display: block;
-}
-audio, canvas, progress, video {
-    display: inline-block;
-    vertical-align: baseline;
-}
-[hidden] {
-    display: none;
-}
-a {
-    background: transparent;
-}
-abbr[title] {
-    border-bottom: 1px dotted;
-}
-b, strong {
-    font-weight: bold;
-}
-h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
-}
-small {
-    font-size: 80%;
-}
-sub, sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-}
-sup {
-    top: -0.5em;
-}
-sub {
-    bottom: -0.25em;
-}
-img {
-    border: 0;
-}
-svg:not(:root) {
-    overflow: hidden;
-}
-figure {
-    margin: 1em 40px;
-}
-hr {
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-    height: 0;
-}
-pre {
-    overflow: auto;
-}
-code, kbd, pre, samp {
-    font-family: monospace, monospace;
-    font-size: 1em;
-}
-input[type="search"] {
-    -webkit-appearance: textfield;
-}
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none;
-}
-audio, canvas, img, svg, video {
-    vertical-align: middle;
-}
-.clearfix:before, .clearfix:after {
-    content: " ";
-    display: table;
-}
-.clearfix:after {
-    clear: both;
-}
-
-@media print { /*Standard styles for printing, you probably don't have to worry about these*/
-    * {
-        background: transparent !important;
-        color: #000 !important;
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
-
-    a, a:visited {
-        text-decoration: underline;
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
-
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
-
-    a[href^="#"]:after,
-    a[href^="javascript:"]:after {
-        content: "";
-    }
-
-    pre, blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-
-    thead {
-        display: table-header-group; /* h5bp.com/t */
-    }
-
-    tr, img {
-        page-break-inside: avoid;
-    }
-
-    img {
-        max-width: 100% !important;
-    }
-
-    p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-    }
-
-    h2, h3 {
-        page-break-after: avoid;
-    }
-}
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background:0 0}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
 
 /*Custom 404 page content code*/
-
 {block:PermalinkPage}{block:Text}{block:Title}
+
 article[data-404check="{block:English}Not Found{/block:English}{block:German}Nicht gefunden{/block:German}{block:French}Page introuvable{/block:French}{block:Italian}Non Trovato{/block:Italian}{block:Japanese}ページが見つかりません{/block:Japanese}{block:Turkish}Bulunamadı{/block:Turkish}{block:Spanish}No encontrado{/block:Spanish}{block:Russian}Не найдено{/block:Russian}{block:Polish}Nie znaleziono strony{/block:Polish}{block:PortuguesePT}Não encontrado{/block:PortuguesePT}{block:PortugueseBR}Página não encontrada{/block:PortugueseBR}{block:Dutch}Niet gevonden{/block:Dutch}{block:Korean}결과 없음{/block:Korean}"]:before {
 	content: url({image:Custom404Image}) "\a {text:Custom404Message} \a ";
 	white-space: pre-wrap;
 }
 {/block:Title}{/block:Text}{/block:PermalinkPage}
     
-/*xKit-replies styling for best results*/
+/*style hooks for the code generated by the popular xKit addon*/
+/*these selectors are overqualified, making sure I got everything in case of conflicts*/
+/*Older xkits also generated different code, needs research*/
+p > .image_thumbnail[src=*"media.tumblr.com/avatar"]
+
+p > .activity
+
+p > .activity > .tumblelog[target="_blank"]
+
+/* Example markup, multiple can be in one post at a time
+
+--Optional user avatar
+<p>
+	<img class="image_thumbnail" src="https://##.media.tumblr.com/avatar_..._40.png" />
+</p>
+
+--Follow notification
+<p>
+	<span class="activity">
+		<a class="tumblelog" target="_blank">USERNAME</a> started following you
+	</span>
+</p>
+
+--Like notification
+<p>
+	<span class="activity">
+		<a class="tumblelog" target="_blank">USERNAME</a> liked your POST
+	</span>
+	<a href="POSTURL">
+		<span class="summary">&ldquo;POST SUMMARY(...)&rdquo;</span>
+	</a>
+</p>
+
+--Mention notification
+<p>
+	<span class="activity">
+		<a class="tumblelog" target="_blank">MENTIONER USERNAME</a> mentioned you in a post
+	</span>
+	<a href="POST URL CONTAINING MENTION">
+		<span class="summary">&ldquo;POST SUMMARY(...)&rdquo;</span>
+	</a>
+</p>
+<blockquote>
+	(&hellip;)PRE-MENTION TEXT<strong>MENTIONED USERNAME</strong>POST-MENTION TEXT(...)
+</blockquote>
+
+--Reply notification (same markup as reblog with reply)
+<p>
+	<span class="activity">
+		<a class="tumblelog" target="_blank">USERNAME</a> replied to your POST
+	</span>
+	<a href="POSTURL">
+		<span class="summary">&ldquo;POST SUMMARY(...)&rdquo;</span>
+	</a>
+</p>
+<blockquote>REPLY TEXT</blockquote>
+
+*/
 
 {CustomCSS}
+
 </style>
 
 <!-- css-tricks.com/international-box-sizing-awareness-day/ - keep the separate style tags! -->
@@ -254,20 +157,19 @@ article[data-404check="{block:English}Not Found{/block:English}{block:German}Nic
 <!-- create more efficient HTML5shiv functionality?-->
 <!--[if lt IE 9]><script src="http://static.tumblr.com/hriofhd/Qj0m8pn7q/html5shiv.js"></script><![endif]-->
 
-<title>{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{block:TagPage}#{Tag} - {/block:TagPage}{block:PermalinkPage}{block:PostTitle}{PostTitle} - {/block:PostTitle}{block:PermalinkPage}{block:DayPage}{lang:Posted on Month DayOfMonth Year} - {/block:DayPage}{Title}</title>
+<title>{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{block:TagPage}#{PlaintextTag} - {/block:TagPage}{block:PermalinkPage}{block:PostSummary}{PostSummary} - {/block:PostSummary}{block:PermalinkPage}{block:DayPage}{lang:Posted on Month DayOfMonth Year} - {/block:DayPage}{Title}</title>
+
 {block:Description}
 <meta name="description" content="{MetaDescription}">
 {/block:Description}
 
-
-<meta name="author" content="{Name}"> <!--Maybe have this as a text: variable, Twitter username, etc.-->
 <meta name="designer" content="Tigt - http://ti.gt/"> <!-- (!) Put yourself here! It's a nice little credit. -->
 <meta name="generator" content="Tumblr">
 
-<!-- This isn't the only RSS feed Tumblr generates; consider ../podcast.xml, etc. -->
-<link rel="alternate" type="application/rss+xml" title="{lang:RSS feed}&mdash;{Title}" href="{RSS}">
+<!-- This isn't the only RSS feed Tumblr generates; consider ../podcast.xml -->
+<link rel="alternate" type="application/rss+xml" title="{Title}&mdash;{lang:RSS}" href="{RSS}">
 
-<!-- These meta tags are for smartphones. If your theme is unsuitable for mobile, you can delete them-->
+<!-- These tags are for smartphones. If your theme is unsuitable for mobile, delete them-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="format-detection" content="telephone=no, address=no">
 
@@ -284,32 +186,13 @@ article[data-404check="{block:English}Not Found{/block:English}{block:German}Nic
 
 <!-- Modified Tumblr's default Twitter Card tags --><!--<meta charset="utf-8"> Remove?--><meta name="twitter:site" content="tumblr" /><meta name="twitter:card" content="summary" /><meta name="twitter:title" content="tigts" /><meta name="twitter:description" content="{MetaDescription}" /><meta name="twitter:app:name:iphone" content="Tumblr" /><meta name="twitter:app:name:ipad" content="Tumblr" /><meta name="twitter:app:name:googleplay" content="Tumblr" /><meta name="twitter:app:id:iphone" content="305343404" /><meta name="twitter:app:id:ipad" content="305343404" /><meta name="twitter:app:id:googleplay" content="com.tumblr" /><meta name="twitter:app:url:iphone" content="tumblr://x-callback-url/blog?blogName={Name}&amp;referrer=twitter-cards" /><meta name="twitter:app:url:ipad" content="tumblr://x-callback-url/blog?blogName={Name}&amp;referrer=twitter-cards" /><meta name="twitter:app:url:googleplay" content="tumblr://x-callback-url/blog?blogName={Name}&amp;referrer=twitter-cards" />
 
-dev.twitter.com/docs/cards/twitter-cards-for-cms-wordpress-blogger-tumblr#tumblr
+	dev.twitter.com/docs/cards/twitter-cards-for-cms-wordpress-blogger-tumblr#tumblr
 
 <!-- Preliminary fixup by ialreadydontlikeyou.tumblr.com-->
-{block:IndexPage}
-  <!-- Your title & description Meta tags for the index pages of your tumblr, including Tumblr theme tags for search and tag pages-->
-<title>{block:TagPage}&quot;{PlaintextTag}&quot; - {/block:TagPage}{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{Title}</title>
-<meta name="Description" content="{MetaDescription}">
-{/block:IndexPage}
-{block:PermalinkPage}
-  <!-- Your title & description Meta tags for the permalink (individual post) pages of your tumblr, The {PostSummary} tag is effective because it will still insert an indvividual post title if available or if your post type doesn't have a title, it will pull copy from your post's caption or description-->
-<title>{block:PostSummary}{PlaintextPostSummary} - {/block:PostSummary}{Title}</title>
-<meta name="Description" content="{MetaDescription}">
-{/block:PermalinkPage}
-{block:PermalinkPage}
-{block:Posts}
-    <!-- Canonical h5bp.com/docs/head-Tips/#urls -->
-    <link rel="canonical" href="{Permalink}">
-{block:Date}
-    <!-- Shortlink h5bp.com/docs/head-Tips/#urls -->
-    <link rel="shortlink" href="{ShortURL}">
-{/block:Date}
-{/block:Posts}
-{/block:PermalinkPage}
 
 <!-- FACEBOOK OPEN GRAPH -->
 <meta property="og:site_name" content="{Title}">
+
 {block:IndexPage}
 <meta property="og:title" content="{block:TagPage}#{PlaintextTag} - {/block:TagPage}{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{Title}"/>
 <meta property="og:url" content="{blogURL}{block:TagPage}tagged/{URLSafeTag}{/block:TagPage}">
@@ -319,10 +202,11 @@ dev.twitter.com/docs/cards/twitter-cards-for-cms-wordpress-blogger-tumblr#tumblr
 {/block:IndexPage}        
 
 {block:PermalinkPage}
-    <meta property="og:url" content="{Permalink}"/>
-    <meta property="og:type" content="article"/>
+<meta property="og:url" content="{Permalink}"/>
+<meta property="og:type" content="article"/>
 
 {block:Posts}
+
 {block:Text}
 {block:Title}<meta property="og:title" content="{PlaintextTitle}"/>{/block:Title}
 <meta property="og:description" content="{PlaintextBody}"/>
@@ -383,7 +267,7 @@ dev.twitter.com/docs/cards/twitter-cards-for-cms-wordpress-blogger-tumblr#tumblr
 <!-- TWITTER META DATA -->
 {block:PermalinkPage}
 <meta name="twitter:url" content="{Permalink}"/>
-<meta name="twitter:site" content="@username"><!-- replace with your twitter username. include the '@' symbol too -->
+<meta name="twitter:site" content="@{TwitterUsername}">
 
 {block:Posts}
 {block:Text}
@@ -457,13 +341,20 @@ dev.twitter.com/docs/cards/twitter-cards-for-cms-wordpress-blogger-tumblr#tumblr
 <!--[if gt IE 9]><!--> <body> <!--<![endif]-->
 
 <header>
+
 <h1>{Title}</h1>
-<h2>{Description}</h2>
+
+<aside>{Description}</aside>
+
 <nav>
+
+
 </nav>
+
 </header>
 
-<main id="content" class="{block:SearchPage}search {block:NoSearchResults}404 {/block:NoSearchResults}{block:SearchPage}" >
+<!-- #content is for jump-to links -->
+<main id="content" class="{block:SearchPage}search {block:NoSearchResults}no-results {/block:NoSearchResults}{block:SearchPage}{block:TagPage}tagged {/block:TagPage}" >
 
 {block:Posts}
 <article class="{PostType} {TagsAsClasses}" {block:PermalinkPage}{block:Text}{block:Title}data-404check="{Title}"{/block:Title}{/block:Text}{/block:PermalinkPage}>
@@ -523,7 +414,7 @@ reblogged from
 <a href="{Permalink}" rel="bookmark">{lang:Permalink}</a>
 
 {block:Date}<time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}T{24HourWithZero}:{Minutes}:{Seconds}">
-	<!--example visible timestamp--> {lang:Posted at FormattedTime}, {TimeAgo} <!--end example -->
+	{lang:Posted at FormattedTime}, {TimeAgo}
 </time>{/block:Date}
 
 {block:ContentSource}
@@ -551,30 +442,34 @@ reblogged from
 
 </main>
 <footer>
-    
-{block:Pagination}<nav>
-	{block:PreviousPage}
-	    <a href="{PreviousPage}" rel="prev"> </a>
-	{/block:PreviousPage}
-	{block:NextPage}
-	    <a href="{NextPage}" rel="next"> </a>
-	{/block:NextPage}
-</nav>{/block:Pagination}
 
-{block:PermalinkPagination}<nav>
-	{block:PreviousPost}
-	    <a href="{PreviousPost}" rel="prev"> </a>
-	{/block:PreviousPost}
-	{block:NextPost}
-	    <a href="{NextPost}" rel="next"> </a>
-	{/block:NextPost}
-</nav>{/block:PermalinkPagination}
+<!-- REMEMBER TO SWAP NEWER/OLDER ON CHRONO PAGES -->
+{block:Pagination}
+	<nav>
+		{block:PreviousPage}
+		    <a href="{PreviousPage}" rel="prev"> </a>
+		{/block:PreviousPage}
+		{block:NextPage}
+		    <a href="{NextPage}" rel="next"> </a>
+		{/block:NextPage}
+	</nav>
+{/block:Pagination}
+
+{block:PermalinkPagination}
+	<nav>
+		{block:PreviousPost}
+		    <a href="{PreviousPost}" rel="prev"> </a>
+		{/block:PreviousPost}
+		{block:NextPost}
+		    <a href="{NextPost}" rel="next"> </a>
+		{/block:NextPost}
+	</nav>
+{/block:PermalinkPagination}
 
 </footer>
 
 
 
 {block:IfGoogleAnalyticsID}<!-- credit to HTML5Boilerplate team-->
-<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','{GoogleAnalyticsID}','auto');ga('send','pageview');</script>
-{/block:IfGoogleAnalyticsID}
+<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','{GoogleAnalyticsID}','auto');ga('send','pageview');</script>{/block:IfGoogleAnalyticsID}
 </body></html>
