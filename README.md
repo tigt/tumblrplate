@@ -45,7 +45,7 @@ Of course, 5 tweaks does not a boilerplate make. Here's what tumblrplate propose
 
 ###<html> lang attribute
 
-Using Tumblr's language selection blocks, tumblrplate will automatically insert the correct language code into your pages' language attribute. If your language isn't supported, or you wish to override this behavior, there's a text field labeled ISO Language Code for you to insert the correct value.
+Using Tumblr's language selection blocks, tumblrplate will automatically insert the correct language code into your pages' language attribute. Given how confusing looking up language codes is, this one is best left up to the Tumblr system and the selection of languages it supports.
 
 ###DNS Prefetch
 
