@@ -56,8 +56,8 @@
 	<meta name="if:Show Description" content="0">
 	<meta name="if:Show Avatar" content="0">
 	<meta name="if:Show Header" content="0">
-	<meta name="if:Show Likes" content="0">
-	<meta name="if:Show following" content="0">
+	<meta name="if:Show my Likes" content="0">
+	<meta name="if:Show who I follow" content="0">
 
 6. text:
 	<meta name="text:Custom 404 message" content="">
@@ -361,6 +361,10 @@ p > .activity > .tumblelog[target="_blank"]
 
 {block:Text}
 
+{block:Title}
+	<h1>{Title}</h1>
+{/block:Title}
+	<div>{Body}</div>
 {/block:Text}
 
 
@@ -381,15 +385,49 @@ p > .activity > .tumblelog[target="_blank"]
 
 {block:Quote}
 
+	<blockquote class="{Length}">
+		{Quote}
+	</blockquote>
+	
+	{block:Source}
+		<cite>{Source}</cite>
+	{/block:Source}
+	
 {/block:Quote}
 
 
 {block:Link}
 
+	<a href="URL"{block:Host} title="{Host}"{/block:Host} rel="external" {Target}>
+		<div>{Name}</div>
+		
+		{block:Host}
+			<div>{Host}</div>
+		{/block:Host}
+		
+		{block:Thumbnail}
+			<img src="Thumbnail" alt="">
+		{/block:Thumbnail}
+	</a>
+	
+	{block:Description}
+		<div>{Description}</div>
+	{/block:Description}
+
 {/block:Link}
 
 
 {block:Chat}
+
+	{block:Title}<h1>{Title}</h1>{/block:Title}
+	
+	<ol>
+		{block:Lines}
+			<li class="{Alt} {UserNumber}">
+				{block:Label}<b>{Label}:</b>{/block:Label} {Line}
+			</li>
+		{/block:Lines}
+	</ol>
 
 {/block:Chat}
 
