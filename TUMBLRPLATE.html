@@ -13,9 +13,9 @@ ______________________________________________________________________________
 - +yougettheidea
 
 
-                              ᴘʀᴏᴜᴅʟʏ ʙᴜɪʟᴛ ᴡɪᴛʜ
+                               ᴘʀᴏᴜᴅʟʏ ʙᴜɪʟᴛ ᴡɪᴛʜ
                            -=ＴＵＭＢＬＲＰＬＡＴＥ=-
-                              [ti.gt/tumblrplate]
+                               [ti.gt/tumblrplate]
 
  - Tumblrplate is a framework for creating powerful, fast Tumblr themes.
  - For instructions, explanations, updates, credits, and plugins/extensions, visit ti.gt/tumblrplate
@@ -64,7 +64,7 @@ ______________________________________________________________________________
 	<meta name="if:Show who I follow" content="0">
 
 6. text:
-	<meta name="text:Custom 404 message" content="">
+	<meta name="text:Custom 404 message" content="404">
 	<meta name="text:Disqus shortname" content="">
 	<meta name="text:Google Analytics ID" content="">
 
@@ -74,17 +74,19 @@ ______________________________________________________________________________
 <!-- assets.tumblr & static.tumblr are/should be loaded too early to bother prefetching -->
 <link rel="dns-prefetch" href="https://secure.assets.tumblr.com/">
 {block:IfGoogleAnalyticsID}<link rel="dns-prefetch" href="//google-analytics.com/">{/block:IfGoogleAnalyticsID}
+{block:IfTwitter}<link rel="dns-prefetch" href="//twitter.com/">{/block:IfTwitter}
 
 <!--[if IE 6]><![endif]--><!--This conditional comment fixes some loading issues with IE8-->
 
 <style>
 /*Separate CSS file(s) may not be a good idea; static.tumblr.com serves saying no-cache and doesn't gzip, but you do at least get 304 Not Modified. The served HTML pages DO get gzip.*/
 
-/*! normalize.css v3.0.1 | MIT License | git.io/normalize */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background:0 0}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
+/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background:0 0}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:700}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:700}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}
 
-/*Custom 404 page content code*/
 {block:PermalinkPage}{block:Text}{block:Title}
 
+/*Custom 404 page content code*/
 article[data-404check="{block:English}Not Found{/block:English}{block:German}Nicht gefunden{/block:German}{block:French}Page introuvable{/block:French}{block:Italian}Non Trovato{/block:Italian}{block:Japanese}ページが見つかりません{/block:Japanese}{block:Turkish}Bulunamadı{/block:Turkish}{block:Spanish}No encontrado{/block:Spanish}{block:Russian}Не найдено{/block:Russian}{block:Polish}Nie znaleziono strony{/block:Polish}{block:PortuguesePT}Não encontrado{/block:PortuguesePT}{block:PortugueseBR}Página não encontrada{/block:PortugueseBR}{block:Dutch}Niet gevonden{/block:Dutch}{block:Korean}결과 없음{/block:Korean}"]:before {
 	content: url({image:Custom404Image}) "\a {text:Custom404Message} \a ";
 	white-space: pre-wrap;
@@ -94,7 +96,7 @@ article[data-404check="{block:English}Not Found{/block:English}{block:German}Nic
 html { /*Adds vertical scrollbar to all pages, even unneeded; this prevents layout jumps on large screens*/
 	overflow-y: scroll; 
 }
-    
+
 /*style hooks for tumblr-generated code*/
 
 .tumblelog { /*This is what's used for @mentions*/
@@ -105,7 +107,7 @@ html { /*Adds vertical scrollbar to all pages, even unneeded; this prevents layo
 	
 }
 
-/*style hooks for the code generated by the popular xKit addon; older xkits generated different code, needs research*/
+/*style hooks for the code generated by the popular xKit addon; older xKits generated different code, needs research*/
 .image_thumbnail {
 	
 }
@@ -118,7 +120,7 @@ html { /*Adds vertical scrollbar to all pages, even unneeded; this prevents layo
 	
 }
 
-/* Example markup, multiple can be in one post at a time
+/* Examples of xKit's generated markup, multiple can be in one post at a time
 
 --Optional user avatar
 <p>
@@ -183,14 +185,14 @@ a {-webkit-tap-highlight-color: ({RGBcolor:AccentColor},0.5); text-shadow: none;
 <!-- create more efficient HTML5shiv functionality?-->
 <!--[if lt IE 9]><script src="http://static.tumblr.com/hriofhd/Qj0m8pn7q/html5shiv.js"></script><![endif]-->
 
-<title>{block:SearchPage}{lang:Search results for SearchQuery} - {/block:SearchPage}{block:TagPage}#{PlaintextTag} - {/block:TagPage}{block:PermalinkPage}{block:PostSummary}{PostSummary} - {/block:PostSummary}{block:PermalinkPage}{block:DayPage}{lang:Posted on Month DayOfMonth Year} - {/block:DayPage}{Title}</title>
+<title>{block:SearchPage}{lang:Search results for SearchQuery} – {/block:SearchPage}{block:TagPage}#{PlaintextTag} – {/block:TagPage}{block:PermalinkPage}{block:PostSummary}{PostSummary} – {/block:PostSummary}{block:PermalinkPage}{block:DayPage}{lang:Posted on Month DayOfMonth Year} – {/block:DayPage}{PlaintextTitle}</title>
 
 {block:Description}
 <meta name="description" content="{MetaDescription}">
 {/block:Description}
 
 <!-- This isn't the only RSS feed Tumblr generates; consider ../podcast.xml for, well, a podcast theme-->
-<link rel="alternate" type="application/rss+xml" title="{Title}&mdash;{lang:RSS}" href="{RSS}">
+<link rel="alternate" type="application/rss+xml" title="{Title} – {lang:RSS}" href="{RSS}">
 
 <!-- These tags are for smartphones. If your theme is unsuitable for mobile, delete them-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -368,170 +370,256 @@ a {-webkit-tap-highlight-color: ({RGBcolor:AccentColor},0.5); text-shadow: none;
 <!--[if IE 9]><body class="lt-ie10"><![endif]-->
 <!--[if gt IE 9]><!--> <body> <!--<![endif]-->
 
-<header>
+<header class="blog-info">
 
-<h1>{Title}</h1>
-
-<aside>{Description}</aside>
-
-<nav>
-
-
-</nav>
+	<h1 class="blog-title">{Title}</h1>
+	
+	<img src="{PortraitURL-128" alt="" class="blog-avatar">
+	
+	<aside class="blog-description">{Description}</aside>
+	
+	<nav class="nav-head">
+		<ul>
+		{block:HasPages} 
+			{block:Pages} 
+				<li class="nav-head-page"><a href="{URL}">{Label}</a></li>
+			{/block:Pages}
+			{block:AskEnabled}
+				<li class="nav-head-ask"><a href="/ask">{AskLabel}</a></li>
+			{block:AskEnabled}
+			{block:SubmissionsEnabled}
+				<li class="nav-head-submit"><a href="/submit">{SubmitLabel}</a></li>
+			{/block:SubmissionsEnabled}
+		{/block:HasPages}
+		</ul>
+	</nav>
 
 </header>
 
-<!-- #content is for jump-to links -->
+<!-- #content is for jump-to links, styling with it is for chumps -->
 <main id="content" class="{block:SearchPage}search {block:NoSearchResults}no-results {/block:NoSearchResults}{block:SearchPage}{block:TagPage}tagged {/block:TagPage}" >
 
 {block:Posts}
-<article class="{PostType} {TagsAsClasses}" {block:PermalinkPage}{block:Text}{block:Title}data-404check="{Title}"{/block:Title}{/block:Text}{/block:PermalinkPage}>
+<article class="post post__{PostType} {TagsAsClasses}" {block:PermalinkPage}{block:Text}{block:Title}data-404check="{Title}"{/block:Title}{/block:Text}{/block:PermalinkPage}>
 
-{block:Text}
-
-{block:Title}
-	<h2>{Title}</h2>
-{/block:Title}
-	<div>{Body}</div>
-{/block:Text}
-
-
-{block:Photo}
-
-{/block:Photo}
-
-
-{block:Panorama}
-
-{/block:Panorama}
-
-
-{block:Photoset}
-
-{/block:Photoset}
-
-
-{block:Quote}
-
-	<blockquote class="{Length}">
-		{Quote}
-	</blockquote>
+	{block:Text}
+		{block:Title}
+			<div class="post--topper__text"></div>
+				<h2 class="post--topper--title__text">{Title}</h2>
+			</div>
+		{/block:Title}
+			<div class="post--body post--body__text">{Body}</div>
+	{/block:Text}
 	
-	{block:Source}
-		<cite>{Source}</cite>
-	{/block:Source}
 	
-{/block:Quote}
-
-
-{block:Link}
-
-	<a href="URL"{block:Host} title="{Host}"{/block:Host} rel="external" {Target}>
-		<div>{Name}</div>
+	{block:Photo}
+		<div class="post--topper__photo">
+			{LinkOpenTag}
+				{block:IndexPage}
+					<img src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" alt="{PhotoAlt}" class="post--topper__photo__index">
+				{/block:IndexPage}
+				{block:PermalinkPage}
+					<img src="{PhotoURL-1280}" width="{PhotoWidth-1280}" height="{PhotoHeight-1280}" alt="{PhotoAlt}" class="post--topper__photo__permalink">
+				{/block:PermalinkPage}
+			{LinkCloseTag}
+			{block:LinkURL}
+				<span class="post--topper__photo--clickthrough"><a href="{LinkURL}">{LinkURL}</a></span>
+			{/block:LinkURL}
+		</div>
+		{block:Caption}
+			<div class="post--body post--body__photo">
+				{Caption}
+			</div>
+		{/block:Caption}
+	{/block:Photo}
+	
+	
+	{block:Panorama}
+	
+	{/block:Panorama}
+	
+	
+	{block:Photoset}
+	
+	{/block:Photoset}
+	
+	
+	{block:Quote}
+		<blockquote class="{Length} post--topper post--topper__quote">
+			{Quote}
+		</blockquote>
+		{block:Source}
+			<div class="post--body post--body__quote">
+				{Source}
+			</div>
+		{/block:Source}
+	{/block:Quote}
+	
+	
+	{block:Link}
+		<a href="{URL}"{block:Host} title="{Host}"{/block:Host} rel="external" {Target} class="post--topper post--topper__link">
+			<span class="post--topper__link--name">{Name}</span>
+			{block:Host}
+				<div class="post--topper__link--host">{Host}</div>
+			{/block:Host}
+			{block:Thumbnail}
+				<img src="Thumbnail" alt="" class="post--topper__link--thumbnail">
+			{/block:Thumbnail}
+		</a>
+		{block:Description}
+			<div class="post--body post--body__link">{Description}</div>
+		{/block:Description}
+	{/block:Link}
+	
+	
+	{block:Chat}
+		{block:Title}
+			<div class="post--topper post--topper__chat">
+				<h2 class="post--topper--title post--topper--title__chat">{Title}</h2>
+			</div>
+		{/block:Title}
 		
-		{block:Host}
-			<div>{Host}</div>
-		{/block:Host}
+		<ol class="post--body post--body__chat">
+			{block:Lines}
+				<li class="{Alt} {UserNumber}">
+					{block:Label}<b>{Label}:</b>{/block:Label} {Line}
+				</li>
+			{/block:Lines}
+		</ol>
+	{/block:Chat}
+	
+	
+	{block:Audio}
+		<div class="post--topper__audio">
+			{block:TrackName}
+				<h2 class="post--topper__audio--track">{TrackName}</h2>
+			{/block:TrackName}
+			{block:AudioEmbed}
+				{AudioEmbed}
+			{/block:AudioEmbed}
+			{block:AudioPlayer}
+				{AudioPlayer}
+			{/block:AudioPlayer}
+			{block:AlbumArt}
+				<img src="{AlbumArtURL}" alt="">
+			{/block:AlbumArt}
+			{block:Artist}
+				<span class="post--topper__audio--artist">{Artist}</span>
+			{/block:Artist}
+			{block:Album}
+				<span class="post--topper__audio--album">{Album}</span>
+			{/block:Album}
+		</div>
+		{block:Caption}
+			<div class="post--body post--body_audio">
+				{Caption}
+			</div>
+		{/block:Caption}
+	{/block:Audio}
+	
+	
+	{block:Video}
+		<div class="post--topper post--topper__video">
+			{VideoEmbed-500}
+			<span class="post--topper__video--playcount">{PlayCountWithLabel}</span>
+		</div>
+		{block:Caption}
+			<div class="post--body post--body__video">
+				{Caption}
+			</div>
+		{/block:Caption}
+	{/block:Video}
+	
+	
+	{block:Answer}
+		<div class="post--topper post--topper__answer">
+			{Question}
 		
-		{block:Thumbnail}
-			<img src="Thumbnail" alt="">
-		{/block:Thumbnail}
-	</a>
+		<span class="post--topper__answer--asker">{Asker}</span>
+		<img class="post--topper__answer--asker-avatar" url="{AskerPortraitURL-128}" alt="">
+		</div>
+		{block:Answerer}
+		<div class="post--body post--body__answer">
+		<div class="text">
+		    <p class="answerer"><strong>{Answerer}</strong> answered:</p>
+		    <div class="answerer-answer">
+		        {Answer}
+		    </div>
+		</div>
+		<div class="avatar">
+		    <img class="answerer-avatar" src="{AnswererPortraitURL-128}" alt="">
+		</div>
+		</div>
+		{/block:Answerer}
+		
+		<div class="replies">
+		{Replies}
+		</div>
 	
-	{block:Description}
-		<div>{Description}</div>
-	{/block:Description}
-
-{/block:Link}
-
-
-{block:Chat}
-
-	{block:Title}<h1>{Title}</h1>{/block:Title}
+	{/block:Answer}
 	
-	<ol>
-		{block:Lines}
-			<li class="{Alt} {UserNumber}">
-				{block:Label}<b>{Label}:</b>{/block:Label} {Line}
-			</li>
-		{/block:Lines}
-	</ol>
-
-{/block:Chat}
-
-
-{block:Audio}
-
-{/block:Audio}
-
-
-{block:Video}
-
-{/block:Video}
-
-
-{block:Answer}
-
-{/block:Answer}
-
-<footer>
-reblogged from
-
-<a href="{Permalink}" rel="bookmark">{lang:Permalink}</a>
-
-{block:Date}<time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}T{24HourWithZero}:{Minutes}:{Seconds}">
-	{lang:Posted at FormattedTime}, {TimeAgo}
-</time>{/block:Date}
-
-{block:ContentSource}
-	<a href="{SourceURL}" cite="{SourceURL}">{SourceTitle}</a>
-{/block:ContentSource}
-
-{block:Submission}
-	<a href="{SubmitterURL}" cite="{SubmitterURL}">{Submitter}</a>
-{/block:Submission}
-
-{block:HasTags}
-	{block:Tags}<a href="{TagURL}" rel=tag title="{lang:Posts tagged Tag}">#{Tag}</a> {/block:Tags}
-{/block:HasTags}
-
-{block:IfDisqusShortname}{block:PermalinkPage}
-	<aside class="comments">
-		<div id="disqus_thread"></div>
-		<script>(function(){var dsq=document.createElement('script');dsq.type='text/javascript';dsq.async=true;dsq.src='http://{text:Disqus Shortname}.disqus.com/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
-		<noscript>{lang:Blog comments powered by Disqus 2}</a></noscript>
-	</aside>
-{/block:PermalinkPage}{/block:IfDisqusShortname}
-</footer>
-</article>
-{/block:Posts}
-
+	<footer class="post--info">
+	reblogged from
+	
+	<a href="{Permalink}" rel="bookmark">{lang:Permalink}</a>
+	
+	{block:Date}<time datetime="{Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}T{24HourWithZero}:{Minutes}:{Seconds}">
+		{lang:Posted at FormattedTime}, {TimeAgo}
+	</time>{/block:Date}
+	
+	{block:ContentSource}
+		<span class="content-source">
+			{lang:Source}: <a href="{SourceURL}" cite="{SourceURL}">{SourceTitle}</a>
+		</span>
+	{/block:ContentSource}
+	
+	{block:Submission}
+		{lang:Via}: <a href="{SubmitterURL}" cite="{SubmitterURL}">{Submitter}</a>
+	{/block:Submission}
+	
+	{block:HasTags}
+		<div class="tag-container">
+			{block:Tags}<a href="{TagURL}" rel="tag" title="{lang:Posts tagged Tag}">#{Tag}</a> {/block:Tags}
+		</div>
+	{/block:HasTags}
+	
+	{block:IfDisqusShortname}{block:PermalinkPage}
+		<aside class="post--comments__permalink">
+			<div id="disqus_thread"></div>
+			<script>(function(){var dsq=document.createElement('script');dsq.type='text/javascript';dsq.async=true;dsq.src='http://{text:Disqus Shortname}.disqus.com/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+			<noscript>{lang:Blog comments powered by Disqus 2}</a></noscript>
+		</aside>
+	{/block:PermalinkPage}{/block:IfDisqusShortname}
+	
+	{block:PermalinkPage}
+		{PostNotes}
+	{/block:PermalinkPage}
+	</footer>
+	</article>
+	{/block:Posts}
 </main>
 <footer>
-
-<!-- REMEMBER TO SWAP NEWER/OLDER ON CHRONO PAGES -->
-{block:Pagination}
-	<nav>
-		{block:PreviousPage}
-		    <a href="{PreviousPage}" rel="prev"> </a>
-		{/block:PreviousPage}
-		{block:NextPage}
-		    <a href="{NextPage}" rel="next"> </a>
-		{/block:NextPage}
-	</nav>
-{/block:Pagination}
-
-{block:PermalinkPagination}
-	<nav>
-		{block:PreviousPost}
-		    <a href="{PreviousPost}" rel="prev"> </a>
-		{/block:PreviousPost}
-		{block:NextPost}
-		    <a href="{NextPost}" rel="next"> </a>
-		{/block:NextPost}
-	</nav>
-{/block:PermalinkPagination}
-
+	<!-- REMEMBER TO SWAP NEWER/OLDER ON CHRONO PAGES -->
+	{block:Pagination}
+		<nav class="nav__foot--page">
+			{block:PreviousPage}
+			    <a href="{PreviousPage}" rel="prev">{lang:Previous}</a>
+			{/block:PreviousPage}
+			{block:NextPage}
+			    <a href="{NextPage}" rel="next">{lang:Next}</a>
+			{/block:NextPage}
+		</nav>
+	{/block:Pagination}
+	{block:PermalinkPagination}
+		<nav class="nav__foot--permalink">
+			{block:PreviousPost}
+			    <a href="{PreviousPost}" rel="prev">{lang:Previous}</a>
+			{/block:PreviousPost}
+			{block:NextPost}
+			    <a href="{NextPost}" rel="next">{lang:Next}</a>
+			{/block:NextPost}
+		</nav>
+	{/block:PermalinkPagination}
 </footer>
 
 
