@@ -370,6 +370,40 @@ a {-webkit-tap-highlight-color: ({RGBcolor:AccentColor},0.5); text-shadow: none;
 <!--[if IE 9]><body class="lt-ie10"><![endif]-->
 <!--[if gt IE 9]><!--> <body> <!--<![endif]-->
 
+{block:PermalinkPage}
+	Custom pages, Ask, Submit, & post permalinks
+{/block:PermalinkPage}
+
+{block:PermalinkPage}
+	{block:Date}
+		Post permalinks
+	{/block:Date}
+{/block:PermalinkPage}
+
+{block:IndexPage}
+	Regular index pages, search pages, tag pages, day pages	
+{/block:IndexPage}
+
+{block:DayPage}
+	Day pages
+{/block:DayPage}
+
+{block:TagPage}
+	Tag pages
+{/block:TagPage}
+
+{block:SearchPage}
+	Search pages
+{/block:SearchPage}
+
+<!--No way to add to regular index pages without also adding to the specialized indexes... unless some horrible hacks were involved...-->
+
+{block:IndexPage}{block:DayPage}<!--{/block:DayPage}{block:TagPage}<!--{/block:TagPage}{block:SearchPage}<!--{/block:SearchPage}
+
+	*content*
+
+{block:DayPage}-->{/block:DayPage}{block:TagPage}-->{/block:TagPage}{block:SearchPage}-->{/block:SearchPage}{/block:IndexPage}
+
 <header class="blog-info">
 
 	<h1 class="blog-title">{Title}</h1>
@@ -558,7 +592,7 @@ a {-webkit-tap-highlight-color: ({RGBcolor:AccentColor},0.5); text-shadow: none;
 	
 	{/block:Answer}
 	
-	<footer class="post--info">
+	<footer class="post-info">
 	reblogged from
 	
 	<a href="{Permalink}" rel="bookmark">{lang:Permalink}</a>
@@ -584,20 +618,46 @@ a {-webkit-tap-highlight-color: ({RGBcolor:AccentColor},0.5); text-shadow: none;
 	{/block:HasTags}
 	
 	{block:IfDisqusShortname}{block:PermalinkPage}
-		<aside class="post--comments__permalink">
+		<aside class="comments">
 			<div id="disqus_thread"></div>
-			<script>(function(){var dsq=document.createElement('script');dsq.type='text/javascript';dsq.async=true;dsq.src='http://{text:Disqus Shortname}.disqus.com/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script>
+			<script>!function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="http://{text:Disqus Shortname}.disqus.com/embed.js",(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)}();</script>
 			<noscript>{lang:Blog comments powered by Disqus 2}</a></noscript>
 		</aside>
 	{/block:PermalinkPage}{/block:IfDisqusShortname}
 	
 	{block:PermalinkPage}
-		{PostNotes}
+		{block:Date}
+			<aside id="notes" class="notes-container">
+				{PostNotes}
+			</aside>
+		{/block:Date}
 	{/block:PermalinkPage}
+	
 	</footer>
+	
 	</article>
+	
 	{/block:Posts}
+	
 </main>
+
+<aside class="extras">
+
+	{block:Likes}
+		<h3>Likes</h3>
+		{Likes limit="10" width="300" summarize="250"}
+		<!-- limit = 1-10 posts, width = #px, summarize = 0-250 characters -->
+	{/block:Likes}
+	
+	{block:IfShowTwitterWidget}{block:Twitter}
+	    <div id="twitter" style="display:none;">
+	        <h3><a href="//twitter.com/{TwitterUsername}">Tweets</a></h3>
+	        <div id="tweets"></div>
+	    </div>
+	    <script>function recent_tweets(t){for(i=0;i<t.length;i++)document.getElementById("tweets").innerHTML=document.getElementById("tweets").innerHTML+'<a href="//twitter.com/{TwitterUsername}/status/'+(t[i].id_str?t[i].id_str:t[i].id)+'"><div class="content">'+t[i].text+"</div></a>";document.getElementById("twitter").style.display="block"}</script>
+	{/block:Twitter}{/block:IfShowTwitterWidget}
+	
+</aside>
 <footer>
 	<!-- REMEMBER TO SWAP NEWER/OLDER ON CHRONO PAGES -->
 	{block:Pagination}
@@ -625,5 +685,11 @@ a {-webkit-tap-highlight-color: ({RGBcolor:AccentColor},0.5); text-shadow: none;
 
 
 {block:IfGoogleAnalyticsID}<!-- credit to HTML5Boilerplate team-->
-<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','{GoogleAnalyticsID}','auto');ga('send','pageview');</script>{/block:IfGoogleAnalyticsID}
+	<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','{text:GoogleAnalyticsID}','auto');ga('send','pageview');</script>
+{/block:IfGoogleAnalyticsID}
+
+{block:IfShowTwitterWidget}{block:Twitter}
+    <script src="/tweets.js" async></script>
+{/block:Twitter}{/block:IfShowTwitterWidget}
+
 </body></html>
